@@ -1,0 +1,57 @@
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+	 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+    <img id="image_upload_preview" style="height: 150px;" src="http://placehold.it/150x150" alt="your image" />
+<form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form|crispy }}
+<button type="submit">register</button>
+</form>
+ <script>
+
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      maxDate: 0,
+      yearRange: "-100:+0",
+      dateFormat: 'dd/mm/yy',
+      beforeShow: function(){    
+           $(".ui-datepicker").css('font-size', 10) 
+    },
+      // You can put more options here.
+
+    });
+
+  });
+
+   function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#id_profilepic").change(function () {
+        readURL(this);
+    });
+
+
+  </script>
+</body>
+</html>
