@@ -112,8 +112,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
 
-LOGIN_URL = 'mysite_login'
-LOGOUT_URL = 'mysite_logout'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'matri_login'
+LOGOUT_URL = 'matri_logout'
+LOGIN_REDIRECT_URL = 'main'
 
 STATICFILES_DIRS = ("static",)
