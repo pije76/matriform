@@ -16,9 +16,9 @@ def main(request):
 		form = regform(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-			return redirect('home')
+			return redirect('main')
 		else:
-			return render(request, 'reg.html',{'form':form})
+			return render(request, 'main.html',{'form':form})
 	else:
 		form = regform()
 	return render(request, 'main.html',{'form':form})

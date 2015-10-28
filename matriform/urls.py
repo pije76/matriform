@@ -29,4 +29,5 @@ urlpatterns = [
         name='matri_login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': 'main'}, name='matri_logout'),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

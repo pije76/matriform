@@ -1,21 +1,49 @@
 
 {% extends "base.html" %}
+{% load staticfiles %}
 
+
+
+ {% block styling %}
+      <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+      <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        {% endblock styling %}
 
 {% block content %}
+
+    {% if user.is_authenticated %}
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#reg" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span> Registration</a></li>
+            <li><a href="#search" data-toggle="tab"><input  type="search" placeholder="Search"></a></li>
+            <li><a href="#admin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="reg">
+            <br/>
+                {% include "reg.html" %}
+            </div>
+            <div class="tab-pane fade" id="search"><br/></div>
+            <div class="tab-pane fade" id="admin"><br/></div>
+        </div>
+
+    </div>
+
+         
+        {% else %} 
     <div class="jumbotron">
         <p>Welcome to the Saptapadi Matrimonial.</p>
         <p style="margin-top: 1em">
-        {% if user.is_authenticated %}
-            <a  href="{% url 'matri_logout' %}">Click here to logout</a>
-        {% else %} 
+        
            <a  href="{% url 'matri_login' %}">Click here to login</a>
-        {% endif %} 
+        
         </p>
     </div>
-    {% if user.is_authenticated %}
-     
-    {% include "reg.html" %}
     {% endif %} 
      
 {% endblock content %}
+
+{% block javascript %}
+<script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
+    {% endblock javascript %}

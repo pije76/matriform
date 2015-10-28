@@ -13,8 +13,7 @@
         <script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"></script>
         <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
         {% block styling %}
-            {# Load Twitter Bootstrap http://getbootstrap.com/ #}
-            {# With Amelia theme from http://bootswatch.com/amelia/ #}
+            
             
         {% endblock styling %}
 
@@ -47,7 +46,7 @@
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user">  {{ user.username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{% url 'matri_logout' %}" class="btn"><span class="glyphicon glyphicon-log-out"></span>  Logout </a></li>
+                    <li><a href="{% url 'matri_logout' %}" ><span class="glyphicon glyphicon-log-out"></span>  Logout </a></li>
                 </ul>
             </li>
             {% else %}

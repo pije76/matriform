@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# aptitude install libfontconfig
+# aptitude install libfontconfig bzr
 # http://stackoverflow.com/questions/8915296/python-image-library-fails-with-message-decoder-jpeg-not-available-pil
 
 
@@ -47,7 +47,10 @@ INSTALLED_APPS = (
     'formapp',
     'crispy_forms',
     'wkhtmltopdf',
+    'jqm',
+    
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
