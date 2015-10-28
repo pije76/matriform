@@ -1,21 +1,12 @@
+
 {% load crispy_forms_tags %}
+	
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-
-
-	 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-</head>
-<body>
     <img id="image_upload_preview" style="height: 150px;" src="http://placehold.it/150x150" alt="your image" />
 <form action="" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form|crispy }}
-<button type="submit">register</button>
+<button type="submit" class="ghost-button">register</button>
 </form>
  <script>
 
@@ -53,5 +44,3 @@
 
 
   </script>
-</body>
-</html>

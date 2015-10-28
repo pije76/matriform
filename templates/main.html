@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 
@@ -12,4 +13,9 @@
         {% endif %} 
         </p>
     </div>
+    {% if user.is_authenticated %}
+     
+    {% include "reg.html" %}
+    {% endif %} 
+     
 {% endblock content %}
