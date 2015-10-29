@@ -1,7 +1,11 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
        
         </head>
-<body><h1>{{ view.title }} <span>मुलाचे नाव / मुलीचे नाव(Name of Candidate):</span></h1></body>
+<body>
+<img id="image_upload_preview" style="height: 150px;" src="{% static 'img/search-icon.png' %}" alt="your image" />
+<h1>{{ view.title }} <span>मुलाचे नाव / मुलीचे नाव(Name of Candidate):</span></h1></body>
 </html>
