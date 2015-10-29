@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # aptitude install libfontconfig bzr
 # http://stackoverflow.com/questions/8915296/python-image-library-fails-with-message-decoder-jpeg-not-available-pil
-
+# apt-get install wkhtmltopdf
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'wkhtmltopdf',
     'jqm',
-    
+    'floppyforms',
 )
 
 
@@ -111,7 +111,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+MEDIA_ROOT = '/vagrant/django-learn/matriform/images'
 
+STATIC_ROOT = 'static_root/'
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
 
@@ -120,3 +122,7 @@ LOGOUT_URL = 'matri_logout'
 LOGIN_REDIRECT_URL = 'main'
 
 STATICFILES_DIRS = ("static",)
+
+WKHTMLTOPDF_CMD = '/usr/local/bin/wkhtmltopdf.sh'
+
+# AUTH_USER_MODEL = 'formapp.matriformuser'

@@ -10,8 +10,20 @@
         {% endblock styling %}
 
 {% block content %}
+{% if msg %}
+
+
+<div class="container">
+   <div class="alert alert-success fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> {{msg}}
+</div>
+</div>
+
+{% endif %}
 
     {% if user.is_authenticated %}
+    
     <div class="container">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#reg" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span> Registration</a></li>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import matriaspirants
+from .models import matriaspirant
 # Register your models here.
 
-admin.site.register(matriaspirants)	
+admin.site.register(matriaspirant)	

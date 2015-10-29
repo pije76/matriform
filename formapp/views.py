@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from .models import matriaspirants
+from .models import matriaspirant
 from .forms import regform
 from django.http import HttpResponse
 from django.shortcuts import redirect
+from wkhtmltopdf.views import PDFTemplateView
+from django.contrib.auth.decorators import login_required
 
 # https://coderwall.com/p/bz0sng/simple-django-image-upload-to-model-imagefield
 
@@ -10,15 +12,27 @@ from django.shortcuts import redirect
 # def main(request):
 # 	return render(request, 'main.html')
 
+class PDFTemp(PDFTemplateView):
+	template_name = "pdftemplate.html"
+	title = "just test"
+
+
+
+
+PDFTempview = login_required(PDFTemp.as_view())	
+
 
 def main(request):
+
 	if request.method == 'POST':
 		form = regform(request.POST, request.FILES)
+
 		if form.is_valid():
 			form.save()
-			return redirect('main')
+			# return redirect('main')
+			return render(request, 'main.html',{'form':form, 'msg': "Success"})
 		else:
-			return render(request, 'main.html',{'form':form})
+			return render(request, 'main.html',{'form':form, 'msg': "Failed"})
 	else:
-		form = regform()
-	return render(request, 'main.html',{'form':form})
+		form = regform(initial={'creator': request.user})
+	return render(request, 'main.html',{'form':form, 'email':"rajdeep"})

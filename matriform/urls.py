@@ -17,9 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from formapp.views import main
+from formapp.views import main, PDFTempview
 from django.contrib import admin
-from django.core.urlresolvers import reverse_lazy
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -29,5 +29,6 @@ urlpatterns = [
         name='matri_login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': 'main'}, name='matri_logout'),
+    url(r'^pdf/$', PDFTempview, name='pdf'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
