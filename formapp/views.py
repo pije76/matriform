@@ -19,9 +19,9 @@ class PDFTemp(PDFTemplateView):
 class OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
-    columns = ['name', 'gender', 'caste', 'dob', 'complexion']
+    columns = ['profilepic.url', 'gender', 'caste', 'dob', 'complexion']
 
-
+olistjson = login_required(OrderListJson.as_view())
 
 PDFTempview = login_required(PDFTemp.as_view())	
 

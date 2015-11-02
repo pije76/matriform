@@ -5,8 +5,12 @@
 
 
  {% block styling %}
-      <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+      <!-- <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}"> -->
       <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+      <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
+      <!-- <link rel="stylesheet" href="{% static 'css/dataTables.jqueryui.min.css' %}"> -->
+      <link rel="stylesheet" href="{% static 'css/jquery-uii.css' %}">
+      <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
         {% endblock styling %}
 
 {% block content %}
@@ -48,7 +52,7 @@
                 {% include "reg.html" %}
             </div>
             <div class="tab-pane fade" id="search"><br/>
-                <table id="mytable">
+                <table id="mytable" class="display cell-border"  cellspacing="0" width="100%">
                     
 
                                 <thead>
@@ -96,7 +100,19 @@
 <script type="text/javascript">
    
     $('#mytable').dataTable( {
-        "ajax": "{%  url 'order_list_json' %}"
+        "ajax": "{%  url 'order_list_json' %}",
+        "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="'+data+'" data-lightbox="profilepic" ><img src="'+data+'" style="width:40px;height:50px;" /></a>';
+                },
+                "targets": 0 // column index 
+             }
+
+        ]
     } );
 
   
@@ -104,4 +120,5 @@
 </script>
 
 <script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
+<script src="{% static 'js/vendor/lightbox.js' %}"></script>
     {% endblock javascript %}
