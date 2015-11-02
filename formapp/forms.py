@@ -21,10 +21,36 @@ class regform(ModelForm):
 		self.fields['dob'].widget.format = '%d/%m/%Y'
 		# at the same time, set the input format on the date field like you want it:
 		self.fields['dob'].input_formats = ['%d/%m/%Y']
-		self.fields['tob'].label = "Time of birth"
-		self.fields['dob'].label = "Date of birth"
+		self.fields['tob'].label = "वेऴ(Time)"
+		self.fields['dob'].label = "जन्म तारीख(DOB)"
 		self.fields['name'].label = "मुलाचे नाव / मुलीचे नाव(Name of Candidate)"
-		# self.helper = FormHelper(self)
+		self.fields['height'].label = "उंची(Height)"
+		self.fields['caste'].label = "जात्(caste)"
+		self.fields['complexion'].label = "रंग / वर्ण(Complexion)"
+		self.fields['birth_place'].label = "जन्म ठिकाण(Birth Place)"
+		self.fields['qualification'].label = "शिषन(Qualification)"
+		self.fields['course_hobbie'].label = "कोर्स / छंद(Course / Hobbies)"
+		self.fields['occupation'].label = "नोकरी(Occupation)"
+		self.fields['business'].label = "य़वसाय(Business)"
+		self.fields['agriculture'].label = "शेती(Agriculture)"
+		self.fields['house'].label = "घर(House)"
+		self.fields['income'].label = "उतप्न(Income)"
+		self.fields['father_occupation'].label = "वडिलांची नोकरी/य़वसाय(Father's Occupation)"
+		self.fields['mother_occupation'].label = "आईची नोकरी/य़वसाय(Mother's Occupation) "
+		self.fields['father_name'].label = "वडिलांचे पुर्ण नाव(Father's Full Name)"
+
+		self.fields['father_nativeplace'].label = "वडिलांचे मुऴ गाव(Father's Native Place)"
+		self.fields['mother_nativeplace'].label = "आईची मुऴ गाव(Mother's Native Place)"
+		self.fields['num_brothers'].label = "भाऊ(Brothers)"
+		self.fields['num_brothers_married'].label = "विवाहित(Married)"
+		self.fields['num_brothers_unmarried'].label = "अविवाहित(Unmarried)"
+		self.fields['num_sisters'].label = "जन्म तारीख(DOB)"
+		self.fields['num_sisters_married'].label = "जन्म तारीख(DOB)"
+		self.fields['num_sisters_unmarried'].label = "जन्म तारीख(DOB)"
+		self.fields['expectations'].label = "मुला / मुली बदल्ल अपेशा(Expectation's)"
+		self.fields['mobile'].label = " मोबाईल(Mobile)"
+		self.fields['phone'].label = "फोन(Phone)"
+		self.fields['address'].label = "सध्याचा पता(Current Postal Adress)"
 		# self.helper.layout.append(Submit('save', 'save'))
 		self.helper = FormHelper(self)
 		# self.helper.form_class = 'form-horizontal'
@@ -41,7 +67,7 @@ class regform(ModelForm):
 			 'mother_nativeplace','num_brothers','num_brothers_married','num_brothers_unmarried',
 			 'num_sisters','num_sisters_married','num_sisters_unmarried'),
 			Fieldset('Expectations','expectations'),
-			Fieldset('Contact Info','mobile','phone', 'address'),
+			Fieldset('सपंर्क(Contact)','mobile','phone', 'address'),
       HTML('<div class="container">'), 
       Submit('submit', 'Register',css_class='ghost-button'), 
       HTML('</div>'),
@@ -75,9 +101,9 @@ class regform(ModelForm):
 		self.helper['num_sisters_married'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 		self.helper['num_sisters_unmarried'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 
-		self.helper['expectations'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-8 col-md-offset-2")
+		self.helper['expectations'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-10 col-md-offset-1")
 
 		self.helper['mobile'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4  col-md-offset-1")
 		self.helper['phone'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
-		self.helper['address'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-8 col-md-offset-2")
+		self.helper['address'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-10 col-md-offset-1")
 		
