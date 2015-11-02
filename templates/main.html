@@ -99,7 +99,12 @@
 {% block javascript %}
 <script type="text/javascript">
    
-    $('#mytable').dataTable( {
+    $('#mytable tfoot th').each( function () {
+        var title = $('#mytable thead th').eq( $(this).index() ).text();
+        $(this).html( '<input type="searches"  placeholder="Search '+title+'" />' );
+    } );
+
+   var profiletable = $('#mytable').DataTable( {
         "ajax": "{%  url 'order_list_json' %}",
         "columnDefs": [
             {
@@ -113,6 +118,18 @@
              }
 
         ]
+    } );
+
+   profiletable.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
     } );
 
   
