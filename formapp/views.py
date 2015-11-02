@@ -30,9 +30,10 @@ def main(request):
 		if form.is_valid():
 			form.save()
 			# return redirect('main')
-			return render(request, 'main.html',{'form':form, 'msg': "Success"})
+			form = regform(initial={'creator': request.user})
+			return render(request, 'main.html',{'form':form, 'msg': "Success",'alerttype' : "success"})
 		else:
-			return render(request, 'main.html',{'form':form, 'msg': "Failed"})
+			return render(request, 'main.html',{'form':form, 'msg': "Failed",'alerttype' : "danger"})
 	else:
 		form = regform(initial={'creator': request.user})
-	return render(request, 'main.html',{'form':form, 'email':"rajdeep"})
+	return render(request, 'main.html',{'form':form})

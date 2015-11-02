@@ -14,24 +14,25 @@
 
 
 <div class="container">
-   <div class="alert alert-success fade in">
+
+   <div class="alert alert-{{alerttype}} fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Success!</strong> {{msg}}
+  <strong>{{msg}}</strong> 
 </div>
 </div>
 
 {% endif %}
-
+{% comment %} 
 
     <ul>
     {% for field, errors in form.errors.items %}
     {% for error in errors %}
-        <li></li>
-        {{error}}
+        <li>{{field}} --> {{error}}</li>
+        
      {% endfor %} 
      {% endfor %}   
     </ul>
-
+{% endcomment %} 
     {% if user.is_authenticated %}
     
     <div class="container">

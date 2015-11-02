@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from .models import matriaspirant
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Submit , HTML
+from crispy_forms.layout import Layout, Fieldset, Submit , HTML,Row, Div
 import crispy_forms.layout
 
 
@@ -59,23 +59,30 @@ class regform(ModelForm):
 		# self.helper.field_class = 'col-md-3'
 		self.helper.form_method = 'post'
 		self.helper.layout = Layout(
-			'profilepic',
-			Fieldset('Candidate\'s Personal Info','name', 'gender', 'dob', 'tob','height','caste',
-				'complexion','birth_place','qualification','course_hobbie','occupation','business',
-				'agriculture','house','income'),
-			Fieldset('Family Info','father_occupation', 'mother_occupation', 'father_name', 'father_nativeplace',
-			 'mother_nativeplace','num_brothers','num_brothers_married','num_brothers_unmarried',
-			 'num_sisters','num_sisters_married','num_sisters_unmarried'),
-			Fieldset('Expectations','expectations'),
-			Fieldset('सपंर्क(Contact)','mobile','phone', 'address'),
+			'creator','profilepic',
+			Fieldset('Candidate\'s Personal Info',Div('name', 'gender', css_class='row'), 
+				Div('dob', 'tob', css_class='row'),Div('height', 'caste', css_class='row'),
+				Div('complexion', 'birth_place', css_class='row'),Div('qualification',
+				 'course_hobbie', css_class='row'),Div('occupation', 'business',
+				  css_class='row'),Div('agriculture', 'house', css_class='row'),
+				 Div('income', css_class='row'),),
+			Fieldset('Family Info',Div('father_occupation', 'mother_occupation', css_class='row'),
+			Div('father_name', 'father_nativeplace', css_class='row') ,
+			Div('mother_nativeplace', 'num_brothers', css_class='row'),
+			Div('num_brothers_married', 'num_brothers_unmarried', css_class='row'),
+			Div('num_sisters', 'num_sisters_married', css_class='row'),
+			Div('num_sisters_unmarried', css_class='row'),),
+			Fieldset('Expectations',Div('expectations', css_class='row')),
+			Fieldset('सपंर्क(Contact)',Div('mobile', 'phone', css_class='row'),
+			Div('address', css_class='row')),
       HTML('<div class="container">'), 
       Submit('submit', 'Register',css_class='ghost-button'), 
       HTML('</div>'),
     )
-		self.helper[0:2].wrap_together(crispy_forms.layout.Div, css_class="row")
+		# self.helper[2][0].wrap_together(crispy_forms.layout.Div, css_class="row")
 		self.helper['name'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
-		self.helper['gender'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
-		self.helper['dob'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
+		self.helper['gender'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2 ")
+		self.helper['dob'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1 clearfix")
 		self.helper['tob'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 		self.helper['height'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['caste'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4  col-md-offset-2")
