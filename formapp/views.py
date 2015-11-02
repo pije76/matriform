@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from wkhtmltopdf.views import PDFTemplateView
 from django.contrib.auth.decorators import login_required
-
+from django_datatables_view.base_datatable_view import BaseDatatableView
 # https://coderwall.com/p/bz0sng/simple-django-image-upload-to-model-imagefield
 
 
@@ -16,10 +16,15 @@ class PDFTemp(PDFTemplateView):
 	template_name = "pdftemplate.html"
 	title = "just test"
 
+class OrderListJson(BaseDatatableView):
+        # The model we're going to show
+    model = matriaspirant
+    columns = ['name', 'gender', 'caste', 'dob', 'complexion']
 
 
 
 PDFTempview = login_required(PDFTemp.as_view())	
+
 
 
 def main(request):
