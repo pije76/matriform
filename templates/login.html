@@ -10,9 +10,13 @@
 	{% endif %}
 	    
 	<form role="form" class="form-horizontal" method="post" action="{% url 'matri_login' %}">
+
 	    {% csrf_token %}
-	    {{ form | crispy }}
+	   
+	    {{form | crispy}}
+	   
 	    <input class="btn btn-primary" type="submit" value="Login" />
 	    <input type="hidden" name="next" value="{{ next }}" />
 	</form>
+	
   {% endblock content %}

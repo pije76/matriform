@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from formapp.views import main, PDFTempview, olistjson
+from formapp.forms import MyAuthenticationForm
 from django.contrib import admin
 
 
@@ -25,7 +26,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',main,name='main'),
     # url(r'^reg/$',registration,name='reg'),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'},
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html', 'authentication_form':MyAuthenticationForm},
         name='matri_login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': 'main'}, name='matri_logout'),

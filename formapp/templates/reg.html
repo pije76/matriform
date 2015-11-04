@@ -11,18 +11,26 @@
  <script>
 
   $(function() {
-    $( ".datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      maxDate: 0,
-      yearRange: "-100:+0",
-      dateFormat: 'dd/mm/yy',
-      beforeShow: function(){    
-           $(".ui-datepicker").css('font-size', 14) 
-    },
-      // You can put more options here.
+    $('.datepicker').datetimepicker({
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+                // language: 'fr',
+                minView: 'month',
+                pickerPosition: 'bottom-left',
+                todayBtn: true,
+                startView: 'month'
+            });
 
-    });
+     $('#id_tob').datetimepicker({
+                autoclose: true,
+                format: 'hh:ii',
+                formatViewType: 'time',
+                maxView: 'day',
+                minView: 'hour',
+                pickerPosition: 'bottom-left',
+                startView: 'day'
+            });
+
 function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

@@ -9,8 +9,11 @@
       <link rel="stylesheet" href="{% static 'css/custom.css' %}">
       <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
       <!-- <link rel="stylesheet" href="{% static 'css/dataTables.jqueryui.min.css' %}"> -->
+
+      <link rel="stylesheet" href="{% static 'css/datetimepicker.css' %}">
       <link rel="stylesheet" href="{% static 'css/jquery-uii.css' %}">
       <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+      <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         {% endblock styling %}
 
 {% block content %}
@@ -46,13 +49,13 @@
             <li><a href="#admin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
         </ul>
 
-        <div class="tab-content">
+        <div class="tab-content" style="margin-bottom: 2%">
             <div class="tab-pane fade in active" id="reg">
             <br/>
                 {% include "reg.html" %}
             </div>
             <div class="tab-pane fade" id="search"><br/>
-                <table id="mytable" class="display cell-border"  cellspacing="0" width="100%">
+                <table id="mytable" class="display cell-border" border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
@@ -98,10 +101,10 @@
 
 {% block javascript %}
 <script type="text/javascript">
-   
+   $(function(){
     $('#mytable tfoot th').each( function () {
         var title = $('#mytable thead th').eq( $(this).index() ).text();
-        $(this).html( '<input type="searches"  placeholder="Search '+title+'" />' );
+        $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
     } );
 
    var profiletable = $('#mytable').DataTable( {
@@ -112,7 +115,7 @@
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<a href="'+data+'" data-lightbox="profilepic" ><img src="'+data+'" style="width:40px;height:50px;" /></a>';
+                    return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
                 },
                 "targets": 0 // column index 
              }
@@ -132,10 +135,10 @@
         } );
     } );
 
-  
+  });
    
 </script>
-
+<script src="{% static 'js/vendor/datetimepicker.js' %}"></script>
 <script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
 <script src="{% static 'js/vendor/lightbox.js' %}"></script>
     {% endblock javascript %}

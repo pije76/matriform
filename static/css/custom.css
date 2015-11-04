@@ -105,3 +105,10 @@ input::-webkit-input-placeholder {
 input[type=file] {
     display: none;
 }
+
+
+
+
+.navbar-default {
+    background-image: linear-gradient(to bottom,#fff,#f2f2f2);
+}

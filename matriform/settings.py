@@ -15,6 +15,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # apt-get install wkhtmltopdf
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# http://bootstrap.mohrenweiserpartner.de/mopa/bootstrap/forms/extended
+# https://github.com/ebertti/django-registration-bootstrap/blob/master/templates/registration/login.html
 import os
 
 
@@ -48,6 +50,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'wkhtmltopdf',
     'jqm',
+    'djangojs',
 )
 
 

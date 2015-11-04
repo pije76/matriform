@@ -2,13 +2,16 @@ from django.forms import ModelForm
 from .models import matriaspirant
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Submit , HTML,Row, Div
+from crispy_forms.layout import Layout, Fieldset,ButtonHolder, Submit , HTML,Row, Div
 import crispy_forms.layout
+from django.contrib.auth.forms import AuthenticationForm
+from django.forms.widgets import PasswordInput, TextInput
 
-
-class regform(ModelForm):
+class MyAuthenticationForm(AuthenticationForm):
+	pass
 	
 
+class regform(ModelForm):
 	class Meta:
 		model = matriaspirant
 		exclude = []
@@ -114,3 +117,4 @@ class regform(ModelForm):
 		self.helper['phone'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 		self.helper['address'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-10 col-md-offset-1")
 		
+	
