@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from formapp.views import main, PDFTempview, olistjson
+from formapp.views import main, PDFTempview, olistjson,PDF,MatriaspirantDetailView,matriaspirantUpdate
 from formapp.forms import MyAuthenticationForm
 from django.contrib import admin
 
@@ -31,5 +31,8 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': 'main'}, name='matri_logout'),
     url(r'^pdf/$', PDFTempview, name='pdf'),
+    url(r'^pd/$', PDF.as_view(), name='pd'),
+    url(r'^matriaspirants/(?P<pk>[0-9]+)/$', MatriaspirantDetailView.as_view(), name='matriaspirant-detail'),
+    url(r'matriaspirant/(?P<pk>[0-9]+)/$', matriaspirantUpdate.as_view(), name='matriaspirants_update'),
     url(r'^my/datatable/data/$', olistjson, name='order_list_json'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

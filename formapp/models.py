@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.urlresolvers import reverse
 
 
 
@@ -63,7 +64,8 @@ class matriaspirant(models.Model):
 
 
 
-
+	def get_absolute_url(self):
+		return reverse('matriaspirant-detail', kwargs={'pk': self.pk})
 
 
 	def __str__(self):
