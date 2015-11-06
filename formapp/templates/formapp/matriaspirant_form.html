@@ -1,4 +1,86 @@
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
+
+{% extends "main.html" %}
+
+{% load crispy_forms_tags %}
+	
+
+
+	{% block nav %}
+	{% endblock nav %}
+
+
+{% block extras%}
+
+    <img id="image_upload_preview" style="height: 150px;" src="{{form.instance.profilepic.url}}" alt="your image" />
+
+
+
+<form method="post"  enctype="multipart/form-data">
+{% csrf_token %}
+{% crispy form %}
+
+
+   
 </form>
+
+{% endblock extras%}
+{% block navtab%}
+{% endblock navtab%}
+
+{% block footer%}
+{% endblock footer%}
+{% block javascript %}
+ <script>
+
+  $(function() {
+    $('.datepicker').datetimepicker({
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+                // language: 'fr',
+                minView: 'month',
+                pickerPosition: 'bottom-left',
+                todayBtn: true,
+                startView: 'month'
+            });
+
+     $('#id_tob').datetimepicker({
+                autoclose: true,
+                format: 'hh:ii',
+                formatViewType: 'time',
+                maxView: 'day',
+                minView: 'hour',
+                pickerPosition: 'bottom-left',
+                startView: 'day'
+            });
+
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#id_profilepic").change(function () {
+        readURL(this);
+    });
+
+upload_btn = $( "label[for='id_profilepic']" );
+upload_btn.prepend("<span class='glyphicon glyphicon-upload'></span>");
+upload_btn.addClass( "btn btn-info" );
+nameinput = $("#id_height").parent();
+$("#id_height").css({"z-index":0})
+// nameinput.addClass("input-group");
+// nameinput.append("<span class='input-group-addon' id='basic-addon1'>feet</span>")
+
+
+
+  });
+
+   
+  </script>
+{% endblock javascript %}

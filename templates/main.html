@@ -41,7 +41,12 @@
     </ul>
 {% endcomment %} 
     {% if user.is_authenticated %}
-    
+
+{% block extras%}
+{% endblock extras%}
+
+
+    {% block navtab%}
     <div class="container">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#reg" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span> Registration</a></li>
@@ -80,11 +85,14 @@
                 </table> 
                 
             </div>
-            <div class="tab-pane fade" id="admin"><br/></div>
+            <div class="tab-pane fade" id="admin"><br/>
+            <iframe src="/createuser" scrolling="no" style="border-style: none;height: 580px;overflow-y: hidden;"></iframe>
+
+            </div>
         </div>
 
     </div>
-
+{% endblock navtab %}
          
         {% else %} 
     <div class="jumbotron">
@@ -119,7 +127,17 @@
                     return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
                 },
                 "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="'+data+'"  >"'+data+'" </a>';
+                },
+                "targets": 1 // column index 
              }
+
 
         ]
     } );

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import matriaspirant
-from .forms import regform
+from .forms import regform,matriusercreateform
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from wkhtmltopdf.views import PDFTemplateView
@@ -11,6 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView
+from django.contrib.auth.models import User
 
 
 class MatriaspirantDetailView(DetailView):
@@ -44,22 +45,25 @@ class PDF(TemplateView):
 
 
 
-# class AuthorCreate(CreateView):
-#     model = Author
-#     fields = ['name']
+class UserCreate(CreateView):
+    model = User
+    success_url = '/createuser/'
+    fields = ['username','password','is_superuser','is_staff']
 
 class matriaspirantUpdate(UpdateView):
     model = matriaspirant
-    fields = ['profilepic','name','gender','caste']	
+    # fields = ['profilepic','name','gender','caste']
+    form_class = matriusercreateform
 
 class OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
-    columns = ['profilepic.url', 'gender', 'caste', 'dob', 'complexion']
+    columns = ['profilepic.url', 'id', 'caste', 'dob', 'complexion']
 
 olistjson = login_required(OrderListJson.as_view())
 
 PDFTempview = login_required(PDFTemp.as_view())	
+user_create =login_required(UserCreate.as_view())
 
 
 

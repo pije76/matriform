@@ -17,7 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from formapp.views import main, PDFTempview, olistjson,PDF,MatriaspirantDetailView,matriaspirantUpdate
+from formapp.views import (main, PDFTempview, olistjson,PDF,MatriaspirantDetailView,
+    matriaspirantUpdate,user_create)
 from formapp.forms import MyAuthenticationForm
 from django.contrib import admin
 
@@ -34,5 +35,6 @@ urlpatterns = [
     url(r'^pd/$', PDF.as_view(), name='pd'),
     url(r'^matriaspirants/(?P<pk>[0-9]+)/$', MatriaspirantDetailView.as_view(), name='matriaspirant-detail'),
     url(r'matriaspirant/(?P<pk>[0-9]+)/$', matriaspirantUpdate.as_view(), name='matriaspirants_update'),
+    url(r'^createuser/$', user_create, name='create_user'),
     url(r'^my/datatable/data/$', olistjson, name='order_list_json'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
