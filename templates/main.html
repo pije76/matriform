@@ -51,7 +51,9 @@
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#reg" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span> Registration</a></li>
             <li><a href="#search" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            {% if user.is_superuser %}
             <li><a href="#admin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+            {% endif %}
         </ul>
 
         <div class="tab-content" style="margin-bottom: 2%">
@@ -85,10 +87,12 @@
                 </table> 
                 
             </div>
+            {% if user.is_superuser %}
             <div class="tab-pane fade" id="admin"><br/>
-            <iframe src="/createuser" scrolling="no" style="border-style: none;height: 580px;overflow-y: hidden;"></iframe>
-
+            <iframe src="/create_user" scrolling="no" style="border-style: none;height: 580px;overflow-y: hidden;"></iframe>
+            
             </div>
+            {% endif %} 
         </div>
 
     </div>

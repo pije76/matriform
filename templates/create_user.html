@@ -1,0 +1,30 @@
+{% extends "base2.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+        
+<form   method="post">
+<div class="form-group">
+{% csrf_token %}
+    {{ form | crispy}}
+    <input type="submit" class="ghost-button" value="Create User" />
+    </div>
+</form>
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+jQuery("#div_id_username").next().andSelf().wrapAll('<div id="row" />');
+document.getElementById("id_password").setAttribute("type", "password");
+$( "#div_id_username" ).addClass( "col-md-6" );
+$( "#div_id_password" ).addClass( "col-md-6" );
+
+</script>
+<style type="text/css">
+	body{
+		    background-color: whitesmoke;
+	}
+</style>
+    {% endblock javascript %}
