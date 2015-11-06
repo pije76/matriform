@@ -21,6 +21,7 @@ from formapp.views import (main, PDFTempview, olistjson,PDF,MatriaspirantDetailV
     matriaspirantUpdate,user_create)
 from formapp.forms import MyAuthenticationForm
 from django.contrib import admin
+from django.contrib.auth.forms import UserCreationForm
 
 
 urlpatterns = [
@@ -33,6 +34,7 @@ urlpatterns = [
         {'next_page': 'main'}, name='matri_logout'),
     url(r'^pdf/$', PDFTempview, name='pdf'),
     url(r'^pd/$', PDF.as_view(), name='pd'),
+    # url(r'^create_user/$',(CreateView.as_view(model=CustomUser, get_success_url =lambda: reverse('create_user'), form_class=UserCreationForm, template_name="create_user.html")), name='create_user'),
     url(r'^matriaspirants/(?P<pk>[0-9]+)/$', MatriaspirantDetailView.as_view(), name='matriaspirant-detail'),
     url(r'matriaspirant/(?P<pk>[0-9]+)/$', matriaspirantUpdate.as_view(), name='matriaspirants_update'),
     url(r'^createuser/$', user_create, name='create_user'),

@@ -59,6 +59,10 @@ class OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
     columns = ['profilepic.url', 'id', 'caste', 'dob', 'complexion']
+    def get_initial_queryset(self):
+    	if not self.request.user.is_superuser:
+    		return self.request.user.matriaspirant_set.all()
+    	return self.model.objects.all()
 
 olistjson = login_required(OrderListJson.as_view())
 

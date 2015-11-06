@@ -1,6 +1,6 @@
 
 {% extends "main.html" %}
-
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 	
 
@@ -73,14 +73,20 @@ upload_btn = $( "label[for='id_profilepic']" );
 upload_btn.prepend("<span class='glyphicon glyphicon-upload'></span>");
 upload_btn.addClass( "btn btn-info" );
 nameinput = $("#id_height").parent();
-$("#id_height").css({"z-index":0})
+$("#id_height").css({"z-index":0});
 // nameinput.addClass("input-group");
 // nameinput.append("<span class='input-group-addon' id='basic-addon1'>feet</span>")
 
-
+jQuery("label[for='id_profilepic']").next().css('display','none');
 
   });
 
-   
+ 
+
   </script>
+
+<script src="{% static 'js/vendor/datetimepicker.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
+<script src="{% static 'js/vendor/lightbox.js' %}"></script>
+
 {% endblock javascript %}
