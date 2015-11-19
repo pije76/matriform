@@ -8,6 +8,8 @@
       <!-- <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}"> -->
       <link rel="stylesheet" href="{% static 'css/custom.css' %}">
       <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/dataTables.responsive.css' %}">
+      
       <!-- <link rel="stylesheet" href="{% static 'css/dataTables.jqueryui.min.css' %}"> -->
 
       <link rel="stylesheet" href="{% static 'css/datetimepicker.css' %}">
@@ -62,15 +64,31 @@
                 {% include "reg.html" %}
             </div>
             <div class="tab-pane fade" id="search"><br/>
-                <table id="mytable" class="display cell-border" border="0" cellpadding="-5" cellspacing="0" width="100%">
+            <div id="tabs">
+        <ul  class="navs" role="tablist">
+            <li class="Fresh"><a href="#fresh" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span>Fresh</a></li>
+            <li><a href="#married" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-search"></span> Married</a></li>
+            <li><a href="#bin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Recycle bin</a></li>
+            </ul>
+
+        
+        
+            <div  id="fresh">
+            <br/>
+            <br/>
+            <br/>
+                <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
             <tr>
                 <th>Image</th>
-                <th>caste</th>
-                <th>dob</th>
-                <th>complexion</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>native district</th>
+                <th>current district</th>
                 <th>action</th>
             </tr>
         </thead>
@@ -78,17 +96,93 @@
         <tfoot>
             <tr>
                 <th>Image</th>
-                <th>caste</th>
-                <th>dob</th>
-                <th>complexion</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>native district</th>
+                <th>current district</th>
+                <th>action</th>
+            </tr>
+        </tfoot>
+                </table> 
+            </div>
+            <div  id="married"><br/><br/>
+                  <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                    
+
+                                <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>native district</th>
+                <th>current district</th>
+                <th>action</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>native district</th>
+                <th>current district</th>
                 <th>action</th>
             </tr>
         </tfoot>
                 </table> 
                 
+            </div> 
+            <div id="bin"><br/><br/>
+                  <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                    
+
+                                <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>native district</th>
+                <th>current district</th>
+                <th>action</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>native district</th>
+                <th>current district</th>
+                <th>action</th>
+            </tr>
+        </tfoot>
+                </table> 
+                
+            </div> 
             </div>
+                </div>
+
             {% if user.is_superuser %}
             <div class="tab-pane fade" id="admin"><br/>
+            <h1 style="
+    /* float: left; */
+    font-size: 27px;
+    font-style: b;
+    color: #337AB7;    text-decoration: underline;
+    font-weight: bold;
+">Create Franchisee Account </h1>
             <iframe src="/create_user" scrolling="no" style="border-style: none;height: 580px;overflow-y: hidden;"></iframe>
             
             </div>
@@ -137,7 +231,7 @@
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div class="btn-group"><a href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-danger"><span class="glyphicon glyphicon-edit"></span> Edit</a><a href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> View</a></div>';
+                    return '<div class="btn-group"><a href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-danger col-xs-6"><span class="glyphicon glyphicon-edit"></span> Edit</a><a href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> View</a></div>';
                 },
                 "targets": 4 // column index 
              }
@@ -160,8 +254,16 @@
 
   });
    
+
+
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+ 
 </script>
 <script src="{% static 'js/vendor/datetimepicker.js' %}"></script>
 <script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
 <script src="{% static 'js/vendor/lightbox.js' %}"></script>
+<script src="{% static 'js/vendor/dataTables.responsive.js' %}"></script>
+
     {% endblock javascript %}

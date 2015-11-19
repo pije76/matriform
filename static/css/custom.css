@@ -112,3 +112,23 @@ input[type=file] {
 .navbar-default {
     background-image: linear-gradient(to bottom,#fff,#f2f2f2);
 }
+
+.table-responsive{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+/*#tabs { background: #eee; padding: 10px; margin: 0 0 15px 0; -moz-box-shadow: 0 0 5px #666; -webkit-box-shadow: 0 0 5px #666; }
+
+#tabs .navs { overflow: hidden; margin: 0 0 10px 0; }
+#tabs .navs li { width: 97px; float: left; margin: 0 10px 0 0; }
+#tabs .navs li.last { margin-right: 0; }
+#tabs .navs li a { display: block; padding: 5px; background: #959290; color: white; font-size: 10px; text-align: center; border: 0; }
+#tabs .navs li a:hover { background-color: #111; }
+
+#tabs ul { list-style: none; }
+#tabs ul li a { display: block; border-bottom: 1px solid #666; padding: 4px; color: #666; }
+#tabs ul li a:hover, #tabs ul li a:focus { background: #fe4902; color: white; }
+#tabs ul li:last-child a { border: none; }
+*/
