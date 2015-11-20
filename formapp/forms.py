@@ -131,7 +131,8 @@ class regform(ModelForm):
 		widgets = {
             'dob': forms.DateInput(attrs={'class':'datepicker'}, ),
           	'creator':forms.HiddenInput(),
-          	'matriaspirant_status':forms.HiddenInput()}
+          	'matriaspirant_status':forms.HiddenInput()
+          	}
 
 	def __init__(self, *args, **kwargs):
 		super(regform, self).__init__(*args, **kwargs)
@@ -180,7 +181,7 @@ class regform(ModelForm):
 		self.helper.layout = Layout(
 			'creator','profilepic',
 			Fieldset('Candidate\'s Personal Info',Div('name', 'gender', css_class='row'), 
-				Div('dob', 'tob', css_class='row'),Div('height', 'caste', css_class='row'),
+				Div('dob', 'tob','matriaspirant_status', css_class='row'),Div('height', 'caste', css_class='row'),
 				Div('complexion', 'birth_place', css_class='row'),Div('qualification',
 				 'course_hobbie', css_class='row'),Div('occupation', 'business',
 				  css_class='row'),Div('agriculture', 'house', css_class='row'),

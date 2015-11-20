@@ -31,7 +31,6 @@
 </div>
 
 {% endif %}
-{% comment %} 
 
     <ul>
     {% for field, errors in form.errors.items %}
@@ -41,7 +40,7 @@
      {% endfor %} 
      {% endfor %}   
     </ul>
-{% endcomment %} 
+
     {% if user.is_authenticated %}
 
 {% block extras%}
@@ -66,23 +65,23 @@
             <div class="tab-pane fade" id="search"><br/>
             <div id="tabs">
         <ul  class="navs" role="tablist">
-            <li class="Fresh"><a href="#fresh" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span>Fresh</a></li>
-            <li><a href="#married" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-search"></span> Married</a></li>
-            <li><a href="#bin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Recycle bin</a></li>
+            <li class="Fresh"><a href="#fresh" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-ok-circle"></span> Fresh</a></li>
+            <li><a href="#married" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-ban-circle"></span> Married</a></li>
+            <li><a href="#bin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-trash"></span> Recycle bin</a></li>
             </ul>
 
         
         
             <div  id="fresh">
             <br/>
-            <br/>
-            <br/>
+            
                 <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
             <tr>
                 <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
@@ -96,6 +95,7 @@
         <tfoot>
             <tr>
                 <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
@@ -107,13 +107,14 @@
         </tfoot>
                 </table> 
             </div>
-            <div  id="married"><br/><br/>
-                  <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+            <div  id="married"><br/>
+                  <table id="mytablem" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
             <tr>
                 <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
@@ -127,6 +128,7 @@
         <tfoot>
             <tr>
                 <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
@@ -139,13 +141,14 @@
                 </table> 
                 
             </div> 
-            <div id="bin"><br/><br/>
-                  <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+            <div id="bin"><br/>
+                  <table id="mytableb" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
             <tr>
                 <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
@@ -159,6 +162,7 @@
         <tfoot>
             <tr>
                 <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
@@ -207,8 +211,28 @@
 
 {% block javascript %}
 <script type="text/javascript">
-   $(function(){
+
+
+
+
+   
+
+
+
+
     $('#mytable tfoot th').each( function () {
+        var title = $('#mytable thead th').eq( $(this).index() ).text();
+        if (title!="Image" && title!="action")
+        $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
+    } );
+
+    $('#mytablem tfoot th').each( function () {
+        var title = $('#mytable thead th').eq( $(this).index() ).text();
+        if (title!="Image" && title!="action")
+        $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
+    } );
+
+$('#mytableb tfoot th').each( function () {
         var title = $('#mytable thead th').eq( $(this).index() ).text();
         if (title!="Image" && title!="action")
         $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
@@ -231,14 +255,75 @@
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div class="btn-group"><a href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-danger col-xs-6"><span class="glyphicon glyphicon-edit"></span> Edit</a><a href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> View</a></div>';
+                    return '<div  class="btn-group"><a style="padding-left: 4px;padding-right: 4px;" title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-danger col-xs-6"><span class="glyphicon glyphicon-edit" ></span></a><a style="padding-left: 4px;padding-right: 4px;" title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-eye-open" ></span></a><a  style="padding-left: 4px;padding-right: 4px;" title="View" href="/move/married/'+data+'"  class="married btn btn-primary col-xs-6"><span class="glyphicon glyphicon-ban-circle" ></span></a><a style="padding-left: 4px;padding-right: 4px;" title="View" href="/move/bin/'+data+'" class="bin btn btn-primary col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
                 },
-                "targets": 4 // column index 
+                "targets": 8 // column index 
              }
 
 
         ]
     } );
+
+
+
+var mprofiletable = $('#mytablem').DataTable( {
+        "ajax": "{%  url 'morder_list_json' %}",
+        "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
+                },
+                "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<div class="btn-group"><a href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-danger col-xs-6"><span class="glyphicon glyphicon-edit"></span></a><a href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> </a><a style="padding-left: 4px;padding-right: 4px;" title="View" href="/restore/fresh/'+data+'"  class="restore btn btn-primary col-xs-6"><span class="glyphicon glyphicon-home" ></span></a><a style="padding-left: 4px;padding-right: 4px;" title="View" href="/move/bin/'+data+'" class="bin btn btn-primary col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                },
+                "targets": 8 // column index 
+             }
+
+
+        ]
+    } );
+
+var bprofiletable = $('#mytableb').DataTable( {
+        "ajax": "{%  url 'border_list_json' %}",
+        "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
+                },
+                "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<div class="btn-group"><a href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-danger col-xs-6"><span class="glyphicon glyphicon-edit"></span> </a><a href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> </a><a  style="padding-left: 4px;padding-right: 4px;" title="View" href="/restore/fresh/'+data+'"  class="restore btn btn-primary col-xs-6"><span class="glyphicon glyphicon-home" ></span></a></div>';
+                },
+                "targets": 8 // column index 
+             }
+
+
+        ]
+    } );
+
+function reloadtables(){
+    profiletable.ajax.reload();
+    mprofiletable.ajax.reload();
+    bprofiletable.ajax.reload();
+
+        }
 
    profiletable.columns().every( function () {
         var that = this;
@@ -252,14 +337,78 @@
         } );
     } );
 
-  });
-   
+
+   mprofiletable.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+
+   bprofiletable.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+  
+  
 
 
   $(function() {
     $( "#tabs" ).tabs();
+
+    $(document).on('click','.married',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            reloadtables();
+            }
+        );
+        
+    });
+
+
+ $(document).on('click','.bin',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            reloadtables();
+            }
+        );
+        
+    });
+
+ $(document).on('click','.restore',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            reloadtables();
+            }
+        );
+        
+    });
+
+
   });
  
+</script>
+<script type="text/javascript">
+    
+
+
 </script>
 <script src="{% static 'js/vendor/datetimepicker.js' %}"></script>
 <script src="{% static 'js/vendor/jquery-ui.js' %}"></script>

@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 
 class MatriaspirantDetailView(DetailView):
@@ -72,7 +73,7 @@ class OrderListJson(BaseDatatableView):
 class M_OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
-    columns = ['profilepic.url', 'name',  'gender''caste', 'dob', 'qualification', 'father_nativeplace_district',
+    columns = ['profilepic.url', 'name',  'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
 
     def get_initial_queryset(self):
@@ -86,7 +87,7 @@ class M_OrderListJson(BaseDatatableView):
 class B_OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
-    columns = ['profilepic.url', 'name', 'gender''caste', 'dob', 'qualification', 'father_nativeplace_district',
+    columns = ['profilepic.url', 'name', 'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
 
     def get_initial_queryset(self):
@@ -97,6 +98,8 @@ class B_OrderListJson(BaseDatatableView):
         return self.model.objects.filter(matriaspirant_status="B")
 
 olistjson = login_required(OrderListJson.as_view())
+molistjson = login_required(M_OrderListJson.as_view())
+bolistjson = login_required(B_OrderListJson.as_view())
 
 PDFTempview = login_required(PDFTemp.as_view())
 user_create = login_required(UserCreate.as_view())
@@ -117,3 +120,36 @@ def main(request):
     else:
         form = regform(initial={'creator': request.user})
     return render(request, 'main.html', {'form': form})
+
+
+@login_required
+def move_to_married(request,pk):
+    aspirant = get_object_or_404(matriaspirant,pk=pk)
+    aspirant.matriaspirant_status = 'M'
+    aspirant.save()
+    if aspirant.matriaspirant_status is 'M':
+        return HttpResponse('success move_to_married')
+    else :
+        return HttpResponse('fail move_to_married')
+
+
+@login_required
+def move_to_bin(request,pk):
+    aspirant = get_object_or_404(matriaspirant,pk=pk)
+    aspirant.matriaspirant_status = 'B'
+    aspirant.save()
+    if aspirant.matriaspirant_status is 'B':
+        return HttpResponse('success move_to_bin')
+    else :
+        return HttpResponse('fail move_to_bin')
+
+@login_required
+def restore_to_fresh(request,pk):
+    aspirant = get_object_or_404(matriaspirant,pk=pk)
+    aspirant.matriaspirant_status = 'F'
+    aspirant.save()
+    if aspirant.matriaspirant_status is 'F':
+        return HttpResponse('success restore_to_fresh')
+    else :
+        return HttpResponse('fail restore_to_fresh')
+
