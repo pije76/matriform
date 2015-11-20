@@ -37,6 +37,8 @@ function readURL(input) {
 
             reader.onload = function (e) {
                 $('#image_upload_preview').attr('src', e.target.result);
+                $('#image_upload_preview').wrap(function(){return "<a href='"+e.target.result+"'  data-lightbox='profileimage'></a>";});
+
             }
 
             reader.readAsDataURL(input.files[0]);
