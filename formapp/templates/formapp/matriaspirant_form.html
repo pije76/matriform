@@ -1,13 +1,35 @@
 
+{% extends "main.html" %}
+{% load staticfiles %}
 {% load crispy_forms_tags %}
 	
 
-    <img id="image_upload_preview" style="height: 150px;" src="" alt="your image" />
-<form action="" method="post" enctype="multipart/form-data">
+
+	{% block nav %}
+	{% endblock nav %}
+
+
+{% block extras%}
+
+    <img id="image_upload_preview" style="height: 150px;" src="{{form.instance.profilepic.url}}" alt="your image" />
+
+
+
+<form method="post"  enctype="multipart/form-data">
 {% csrf_token %}
 {% crispy form %}
 
+
+   
 </form>
+
+{% endblock extras%}
+{% block navtab%}
+{% endblock navtab%}
+
+{% block footer%}
+{% endblock footer%}
+{% block javascript %}
  <script>
 
   $(function() {
@@ -37,8 +59,6 @@ function readURL(input) {
 
             reader.onload = function (e) {
                 $('#image_upload_preview').attr('src', e.target.result);
-                $('#image_upload_preview').wrap(function(){return "<a href='"+e.target.result+"'  data-lightbox='profileimage'></a>";});
-
             }
 
             reader.readAsDataURL(input.files[0]);
@@ -53,13 +73,20 @@ upload_btn = $( "label[for='id_profilepic']" );
 upload_btn.prepend("<span class='glyphicon glyphicon-upload'></span>");
 upload_btn.addClass( "btn btn-info" );
 nameinput = $("#id_height").parent();
-$("#id_height").css({"z-index":0})
+$("#id_height").css({"z-index":0});
 // nameinput.addClass("input-group");
 // nameinput.append("<span class='input-group-addon' id='basic-addon1'>feet</span>")
 
-
+jQuery("label[for='id_profilepic']").next().css('display','none');
 
   });
 
-   
+ 
+
   </script>
+
+<script src="{% static 'js/vendor/datetimepicker.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
+<script src="{% static 'js/vendor/lightbox.js' %}"></script>
+
+{% endblock javascript %}

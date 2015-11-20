@@ -8,6 +8,8 @@
       <!-- <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}"> -->
       <link rel="stylesheet" href="{% static 'css/custom.css' %}">
       <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/dataTables.responsive.css' %}">
+      
       <!-- <link rel="stylesheet" href="{% static 'css/dataTables.jqueryui.min.css' %}"> -->
 
       <link rel="stylesheet" href="{% static 'css/datetimepicker.css' %}">
@@ -29,7 +31,6 @@
 </div>
 
 {% endif %}
-{% comment %} 
 
     <ul>
     {% for field, errors in form.errors.items %}
@@ -39,14 +40,21 @@
      {% endfor %} 
      {% endfor %}   
     </ul>
-{% endcomment %} 
+
     {% if user.is_authenticated %}
-    
+
+{% block extras%}
+{% endblock extras%}
+
+
+    {% block navtab%}
     <div class="container">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#reg" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-plus-sign"></span> Registration</a></li>
             <li><a href="#search" style="font-size: 1.5em" data-toggle="tab"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            {% if user.is_superuser %}
             <li><a href="#admin"  style="font-size: 1.5em"  data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Admin</a></li>
+            {% endif %}
         </ul>
 
         <div class="tab-content" style="margin-bottom: 2%">
@@ -55,36 +63,138 @@
                 {% include "reg.html" %}
             </div>
             <div class="tab-pane fade" id="search"><br/>
-                <table id="mytable" class="display cell-border" border="0" cellpadding="-5" cellspacing="0" width="100%">
+            <div id="tabs">
+        <ul  class="navs" role="tablist">
+            <li class="Fresh"><a href="#fresh" style="font-weight: bold" data-toggle="tab"><span class="glyphicon glyphicon-ok-circle"></span> Fresh</a></li>
+            <li><a href="#married" style="font-weight: bold" data-toggle="tab"><span class="glyphicon glyphicon-ban-circle"></span> Married</a></li>
+            <li><a href="#bin"  style="font-weight: bold"  data-toggle="tab"><span class="glyphicon glyphicon-trash"></span> Recycle bin</a></li>
+            </ul>
+
+        
+        
+            <div  id="fresh">
+            <br/>
+            
+                <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
             <tr>
+                <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
-                <th>gender</th>
-                <th>caste</th>
-                <th>dob</th>
-                <th>complexion</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>Native-District</th>
+                <th>Current-District</th>
+                <th>Actions</th>
             </tr>
         </thead>
  
         <tfoot>
             <tr>
+                <th>Image</th>
+                <th>Gender</th>
                 <th>Name</th>
-                <th>gender</th>
-                <th>caste</th>
-                <th>dob</th>
-                <th>complexion</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>Native-District</th>
+                <th>Current-District</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+                </table> 
+            </div>
+            <div  id="married"><br/>
+                  <table id="mytablem" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                    
+
+                                <thead>
+            <tr>
+                <th>Image</th>
+                <th>Gender</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>Native-District</th>
+                <th>Current-District</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Image</th>
+                <th>Gender</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>Native-District</th>
+                <th>Current-District</th>
+                <th>Actions</th>
             </tr>
         </tfoot>
                 </table> 
                 
+            </div> 
+            <div id="bin"><br/>
+                  <table id="mytableb" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                    
+
+                                <thead>
+            <tr>
+                <th>Image</th>
+                <th>Gender</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>Native-District</th>
+                <th>Current-District</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Image</th>
+                <th>Gender</th>
+                <th>Name</th>
+                <th>Caste</th>
+                <th>D.O.B</th>
+                <th>Qualification</th>
+                <th>Native-District</th>
+                <th>Current-District</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+                </table> 
+                
+            </div> 
             </div>
-            <div class="tab-pane fade" id="admin"><br/></div>
+                </div>
+
+            {% if user.is_superuser %}
+            <div class="tab-pane fade" id="admin"><br/>
+            <h1 style="
+    /* float: left; */
+    font-size: 27px;
+    font-style: b;
+    color: #337AB7;    text-decoration: underline;
+    font-weight: bold;
+">Create Franchisee Account </h1>
+            <iframe src="/create_user" scrolling="no" style="border-style: none;height: 580px;overflow-y: hidden;"></iframe>
+            
+            </div>
+            {% endif %} 
         </div>
 
     </div>
-
+{% endblock navtab %}
          
         {% else %} 
     <div class="jumbotron">
@@ -101,9 +211,30 @@
 
 {% block javascript %}
 <script type="text/javascript">
-   $(function(){
+
+
+
+
+   
+
+
+
+
     $('#mytable tfoot th').each( function () {
         var title = $('#mytable thead th').eq( $(this).index() ).text();
+        if (title!="Image" && title!="action")
+        $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
+    } );
+
+    $('#mytablem tfoot th').each( function () {
+        var title = $('#mytable thead th').eq( $(this).index() ).text();
+        if (title!="Image" && title!="action")
+        $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
+    } );
+
+$('#mytableb tfoot th').each( function () {
+        var title = $('#mytable thead th').eq( $(this).index() ).text();
+        if (title!="Image" && title!="action")
         $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
     } );
 
@@ -118,10 +249,81 @@
                     return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
                 },
                 "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<div  class="btn-group"><a  title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit" ></span></a><a s title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-eye-open" ></span></a></div><div class="btn-group"><a   title="Move to Married" href="/move/married/'+data+'"  class="married btn btn-warning col-xs-6"><span class="glyphicon glyphicon-ban-circle" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="fresh_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                },
+                "targets": 8 // column index 
              }
+
 
         ]
     } );
+
+
+
+var mprofiletable = $('#mytablem').DataTable( {
+        "ajax": "{%  url 'morder_list_json' %}",
+        "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
+                },
+                "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span></a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> </a></div><div class="btn-group"><a  title="Restore" href="/restore/fresh/'+data+'"  class="married_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="married_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                },
+                "targets": 8 // column index 
+             }
+
+
+        ]
+    } );
+
+var bprofiletable = $('#mytableb').DataTable( {
+        "ajax": "{%  url 'border_list_json' %}",
+        "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
+                },
+                "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span> </a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> </a><a   title="Restore" href="/restore/fresh/'+data+'"  class="bin_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a></div>';
+                },
+                "targets": 8 // column index 
+             }
+
+
+        ]
+    } );
+
+function reloadtables(){
+    profiletable.ajax.reload();
+    mprofiletable.ajax.reload();
+    bprofiletable.ajax.reload();
+
+        }
 
    profiletable.columns().every( function () {
         var that = this;
@@ -135,10 +337,107 @@
         } );
     } );
 
+
+   mprofiletable.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+
+   bprofiletable.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+  
+  
+
+
+  $(function() {
+    $( "#tabs" ).tabs();
+
+    $(document).on('click','.married',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            profiletable.ajax.reload();
+            mprofiletable.ajax.reload();
+            }
+        );
+        
+    });
+
+
+ $(document).on('click','.fresh_to_bin',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            profiletable.ajax.reload();
+            bprofiletable.ajax.reload();
+            }
+        );
+        
+    });
+
+ $(document).on('click','.married_to_bin',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            mprofiletable.ajax.reload();
+            bprofiletable.ajax.reload();
+            }
+        );
+        
+    });
+
+ $(document).on('click','.bin_restore',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            profiletable.ajax.reload();
+            bprofiletable.ajax.reload();
+            }
+        );
+        
+    });
+
+  $(document).on('click','.married_restore',function(event){
+        event.preventDefault();
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            profiletable.ajax.reload();
+            mprofiletable.ajax.reload();
+            }
+        );
+        
+    });
+
+
   });
-   
+ 
+</script>
+<script type="text/javascript">
+    
+
+
 </script>
 <script src="{% static 'js/vendor/datetimepicker.js' %}"></script>
 <script src="{% static 'js/vendor/jquery-ui.js' %}"></script>
 <script src="{% static 'js/vendor/lightbox.js' %}"></script>
+<script src="{% static 'js/vendor/dataTables.responsive.js' %}"></script>
+
     {% endblock javascript %}

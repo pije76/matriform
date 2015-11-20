@@ -1,0 +1,20 @@
+postgresql
+==========
+sudo apt-get update
+sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+
+su - postgres
+psql
+create database matriform;
+CREATE USER matriformuser WITH PASSWORD 'rjdp9736';
+ALTER ROLE matriformuser SET client_encoding TO 'utf8';
+ALTER ROLE matriformuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE matriformuser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE matriform TO matriformuser;
+\q
+exit
+
+./manage.py migrate auth
+./manage.py migrate
+
+./manage.py createsuperuser
