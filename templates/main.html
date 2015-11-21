@@ -370,6 +370,8 @@ function reloadtables(){
   $(function() {
     $( "#tabs" ).tabs();
 
+
+{% comment %}
     $(document).on('click','.married',function(event){
         event.preventDefault();
         $.get($(this).attr('href'),function(response){
@@ -381,50 +383,153 @@ function reloadtables(){
         
     });
 
+    success move_to_married
 
- $(document).on('click','.fresh_to_bin',function(event){
+    var table1 = $('#example1').DataTable();
+var table2 = $('#example2').DataTable();
+ 
+$('#example tbody').on( 'click', 'img.icon-transfer', function () {
+    var row = table1.row( $(this).parents('tr') );
+    var rowNode = row.node();
+    row.remove();
+ 
+    table2
+        .row.add( rowNode )
+        .draw();
+} );
+
+{% endcomment%}
+
+
+
+    $('#mytable tbody').on( 'click', '.married', function () {
         event.preventDefault();
+        var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            profiletable.ajax.reload();
-            bprofiletable.ajax.reload();
-            }
-        );
-        
-    });
+            if (response == 'success move_to_married'){
+    profiletable
+        .row( $(this_row).parents('tr') )
+        .remove()
+        .draw();
 
- $(document).on('click','.married_to_bin',function(event){
+        mprofiletable.ajax.reload();}}
+        );
+} );
+
+{% comment %}
+ // $(document).on('click','.fresh_to_bin',function(event){
+ //        event.preventDefault();
+ //        $.get($(this).attr('href'),function(response){
+ //            console.log(response);
+ //            profiletable.ajax.reload();
+ //            bprofiletable.ajax.reload();
+ //            }
+ //        );
+        
+ //    });
+{% endcomment %}
+
+
+ $('#mytable tbody').on( 'click', '.fresh_to_bin', function () {
         event.preventDefault();
+        var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            mprofiletable.ajax.reload();
-            bprofiletable.ajax.reload();
-            }
-        );
-        
-    });
+            if (response == 'success move_to_bin'){
+    profiletable
+        .row( $(this_row).parents('tr') )
+        .remove()
+        .draw();
 
- $(document).on('click','.bin_restore',function(event){
+        bprofiletable.ajax.reload();}}
+        );
+} );
+
+
+{% comment %}
+ // $(document).on('click','.married_to_bin',function(event){
+ //        event.preventDefault();
+ //        $.get($(this).attr('href'),function(response){
+ //            console.log(response);
+ //            mprofiletable.ajax.reload();
+ //            bprofiletable.ajax.reload();
+ //            }
+ //        );
+        
+ //    });
+{% endcomment %}
+
+ $('#mytablem tbody').on( 'click', '.married_to_bin', function () {
         event.preventDefault();
+        var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            profiletable.ajax.reload();
-            bprofiletable.ajax.reload();
-            }
-        );
-        
-    });
+            if (response == 'success move_to_bin'){
+    mprofiletable
+        .row( $(this_row).parents('tr') )
+        .remove()
+        .draw();
 
-  $(document).on('click','.married_restore',function(event){
+        bprofiletable.ajax.reload();}}
+        );
+} );
+
+
+{% comment %}
+ // $(document).on('click','.bin_restore',function(event){
+ //        event.preventDefault();
+ //        $.get($(this).attr('href'),function(response){
+ //            console.log(response);
+ //            profiletable.ajax.reload();
+ //            bprofiletable.ajax.reload();
+ //            }
+ //        );
+        
+ //    });
+{% endcomment %}
+
+$('#mytableb tbody').on( 'click', '.bin_restore', function () {
         event.preventDefault();
+        var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            profiletable.ajax.reload();
-            mprofiletable.ajax.reload();
-            }
+            if (response == 'success restore_to_fresh'){
+    bprofiletable
+        .row( $(this_row).parents('tr') )
+        .remove()
+        .draw();
+
+        profiletable.ajax.reload();}}
         );
+} );
+{% comment %}
+  // $(document).on('click','.married_restore',function(event){
+  //       event.preventDefault();
+  //       $.get($(this).attr('href'),function(response){
+  //           console.log(response);
+  //           profiletable.ajax.reload();
+  //           mprofiletable.ajax.reload();
+  //           }
+  //       );
         
-    });
+  //   });
+{% endcomment %}
+
+  $('#mytablem tbody').on( 'click', '.married_restore', function () {
+        event.preventDefault();
+        var this_row = this ;
+        $.get($(this).attr('href'),function(response){
+            console.log(response);
+            if (response == 'success restore_to_fresh'){
+    mprofiletable
+        .row( $(this_row).parents('tr') )
+        .remove()
+        .draw();
+
+        profiletable.ajax.reload();}}
+        );
+} );
 
 
   });
