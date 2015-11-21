@@ -94,6 +94,24 @@ class M_OrderListJson(BaseDatatableView):
     columns = ['profilepic.url', 'name',  'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
 
+    def prepare_results(self, qs):
+        # prepare list with output column data
+        # queryset is already paginated here
+        json_data = []
+        for item in qs:
+            json_data.append([
+                item.profilepic.url if item.profilepic else "",
+                item.name,
+                item.gender,
+                item.caste,
+                item.dob.strftime("%d-%m-%Y"),
+                item.qualification,
+                item.father_nativeplace_district,
+                item.address_district,
+                item.id
+            ])
+        return json_data
+
     def get_initial_queryset(self):
         if not self.request.user.is_superuser:
             # return self.request.user.matriaspirant_set.all()
@@ -107,6 +125,24 @@ class B_OrderListJson(BaseDatatableView):
     model = matriaspirant
     columns = ['profilepic.url', 'name', 'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
+
+    def prepare_results(self, qs):
+        # prepare list with output column data
+        # queryset is already paginated here
+        json_data = []
+        for item in qs:
+            json_data.append([
+                item.profilepic.url if item.profilepic else "",
+                item.name,
+                item.gender,
+                item.caste,
+                item.dob.strftime("%d-%m-%Y"),
+                item.qualification,
+                item.father_nativeplace_district,
+                item.address_district,
+                item.id
+            ])
+        return json_data
 
     def get_initial_queryset(self):
         if not self.request.user.is_superuser:
