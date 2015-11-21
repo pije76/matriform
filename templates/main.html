@@ -81,8 +81,8 @@
                                 <thead>
             <tr>
                 <th>Image</th>
-                <th>Gender</th>
                 <th>Name</th>
+                <th>Gender</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
                 <th>Qualification</th>
@@ -95,8 +95,8 @@
         <tfoot>
             <tr>
                 <th>Image</th>
-                <th>Gender</th>
                 <th>Name</th>
+                <th>Gender</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
                 <th>Qualification</th>
@@ -114,8 +114,8 @@
                                 <thead>
             <tr>
                 <th>Image</th>
-                <th>Gender</th>
                 <th>Name</th>
+                <th>Gender</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
                 <th>Qualification</th>
@@ -128,8 +128,8 @@
         <tfoot>
             <tr>
                 <th>Image</th>
-                <th>Gender</th>
                 <th>Name</th>
+                <th>Gender</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
                 <th>Qualification</th>
@@ -148,8 +148,8 @@
                                 <thead>
             <tr>
                 <th>Image</th>
-                <th>Gender</th>
                 <th>Name</th>
+                <th>Gender</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
                 <th>Qualification</th>
@@ -162,8 +162,8 @@
         <tfoot>
             <tr>
                 <th>Image</th>
-                <th>Gender</th>
                 <th>Name</th>
+                <th>Gender</th>
                 <th>Caste</th>
                 <th>D.O.B</th>
                 <th>Qualification</th>
@@ -246,7 +246,8 @@ $('#mytableb tfoot th').each( function () {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>';
+                    if (Boolean(data)){  return '<a href="'+data+'"  data-lightbox="profilepic" ><img src="'+data+'" class="img-thumbnail img-responsive" style="width:60px;height:75px;" /></a>' ;}
+                     return "N/A" ;
                 },
                 "targets": 0 // column index 
              },
