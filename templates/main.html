@@ -27,11 +27,19 @@
    <div class="alert alert-{{alerttype}} fade in">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>{{msg}}</strong> 
+   <ul class="list-group" >
+    {% for field, errors in form.errors.items %}
+    {% for error in errors %}
+        <li class="list-group-item list-group-item-warning">{{field}} --> {{error}}</li>
+        
+     {% endfor %} 
+     {% endfor %}   
+    </ul>
 </div>
 </div>
 
 {% endif %}
-
+{% comment %}
     <ul>
     {% for field, errors in form.errors.items %}
     {% for error in errors %}
@@ -40,7 +48,7 @@
      {% endfor %} 
      {% endfor %}   
     </ul>
-
+{% endcomment %}
     {% if user.is_authenticated %}
 
 {% block extras%}
@@ -239,6 +247,8 @@ $('#mytableb tfoot th').each( function () {
     } );
 
    var profiletable = $('#mytable').DataTable( {
+        "processing": true,
+        "serverSide": true,
         "ajax": "{%  url 'order_list_json' %}",
         "columnDefs": [
             {
@@ -268,6 +278,8 @@ $('#mytableb tfoot th').each( function () {
 
 
 var mprofiletable = $('#mytablem').DataTable( {
+        "processing": true,
+        "serverSide": true,
         "ajax": "{%  url 'morder_list_json' %}",
         "columnDefs": [
             {
@@ -295,6 +307,8 @@ var mprofiletable = $('#mytablem').DataTable( {
     } );
 
 var bprofiletable = $('#mytableb').DataTable( {
+        "processing": true,
+        "serverSide": true,
         "ajax": "{%  url 'border_list_json' %}",
         "columnDefs": [
             {
@@ -448,6 +462,11 @@ $('#example tbody').on( 'click', 'img.icon-transfer', function () {
         bprofiletable.ajax.reload();}}
         );
 } );
+
+
+ $(".alert").fadeTo(2000, 500).slideUp(700, function(){
+    $(".alert").alert('close');
+});
 
 
 {% comment %}

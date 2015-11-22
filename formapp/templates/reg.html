@@ -18,7 +18,8 @@
                 minView: 'month',
                 pickerPosition: 'bottom-left',
                 todayBtn: true,
-                startView: 'month'
+                startView: 'month',
+                endDate: '-18y'
             });
 
      $('#id_tob').datetimepicker({
@@ -31,6 +32,43 @@
                 startView: 'day'
             });
 
+     {% comment %}
+ $("#id_gender").change(function () {
+    if ($(this).val()=='M'){
+         $('.datepicker').datetimepicker({
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+                // language: 'fr',
+                minView: 'month',
+                pickerPosition: 'bottom-left',
+                todayBtn: true,
+                startView: 'month',
+                endDate: '-21y'
+            });
+    }
+    else{ $('.datepicker').datetimepicker({
+                autoclose: true,
+                format: 'dd/mm/yyyy',
+                // language: 'fr',
+                minView: 'month',
+                pickerPosition: 'bottom-left',
+                todayBtn: true,
+                startView: 'month',
+                endDate: '-18y'
+            });
+
+    }
+        // var end = this.value;
+        // var firstDropVal = $('#pick').val();
+    });
+// $(document).on('change','.#id_gender',function(event){
+// $("#id_gender").filter(function() {
+//     // if ( $(this).val() == "needle" ) {
+//         alert( $(this).val() );
+//         // return true;
+//     // }
+//  }).prop('selected', true);});
+{% endcomment %}
 function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

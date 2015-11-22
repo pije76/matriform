@@ -68,7 +68,13 @@
 <small>Biodata of</small>
 <strong>{{ object.name }}</strong>
 </h1>
-<div class="picture"><img  src="{{ object.profilepic.url }}"></div>
+<div class="picture">
+{% if object.profilepic %}
+<img  src="{{ object.profilepic.url }}">
+{% else %}
+<img  src="" alt="Image not available">
+{% endif %}
+</div>
 </div>
 
 

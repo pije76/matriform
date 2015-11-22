@@ -22,38 +22,39 @@ class matriusercreateform(ModelForm):
 		self.fields['dob'].widget.format = '%d/%m/%Y'
 		# at the same time, set the input format on the date field like you want it:
 		self.fields['dob'].input_formats = ['%d/%m/%Y']
-		self.fields['tob'].label = "वेऴ(Time)"
+		self.fields['tob'].label = "वेळ(Time)"
 		self.fields['dob'].label = "जन्म तारीख(DOB)"
 		self.fields['name'].label = "मुलाचे नाव / मुलीचे नाव(Name of Candidate)"
 		self.fields['height'].label = "उंची(Height)"
 		self.fields['caste'].label = "जात्(caste)"
 		self.fields['complexion'].label = "रंग / वर्ण(Complexion)"
 		self.fields['birth_place'].label = "जन्म ठिकाण(Birth Place)"
-		self.fields['qualification'].label = "शिषन(Qualification)"
+		self.fields['qualification'].label = "सिक्षण(Qualification)"
 		self.fields['course_hobbie'].label = "कोर्स / छंद(Course / Hobbies)"
 		self.fields['occupation'].label = "नोकरी(Occupation)"
-		self.fields['business'].label = "य़वसाय(Business)"
+		self.fields['business'].label = "व्यवसाय(Business)"
 		self.fields['agriculture'].label = "शेती(Agriculture)"
 		self.fields['house'].label = "घर(House)"
-		self.fields['income'].label = "उतप्न(Income)"
-		self.fields['father_occupation'].label = "वडिलांची नोकरी/य़वसाय(Father's Occupation)"
-		self.fields['mother_occupation'].label = "आईची नोकरी/य़वसाय(Mother's Occupation) "
+		self.fields['income'].label = "उत्पन्न(Income)"
+		self.fields['blood_group'].label = "रक्त्तगट(Blood Group)"
+		self.fields['father_occupation'].label = "वडिलांचे नोकरी/व्यवसाय(Father's Occupation)"
+		self.fields['mother_occupation'].label = "आईचे नोकरी/व्यवसाय(Mother's Occupation) "
 		self.fields['father_name'].label = "वडिलांचे पुर्ण नाव(Father's Full Name)"
 
-		self.fields['father_nativeplace'].label = "वडिलांचे मुऴ गाव(Father's Native Place)"
-		self.fields['father_nativeplace_district'].label = "वडिलांचे मुऴ गाव(District)"
-		self.fields['mother_nativeplace'].label = "आईची मुऴ गाव(Mother's Native Place)"
+		self.fields['father_nativeplace'].label = "वडिलांचे मुळ गाव(Father's Native Place)"
+		self.fields['father_nativeplace_district'].label = "जिल्हा(District)"
+		self.fields['mother_nativeplace'].label = "आईचे मुळ गाव(Mother's Native Place)"
 		self.fields['num_brothers'].label = "भाऊ(Brothers)"
 		self.fields['num_brothers_married'].label = "विवाहित भाऊ(Married)"
 		self.fields['num_brothers_unmarried'].label = "अविवाहित भाऊ(Unmarried)"
-		self.fields['num_sisters'].label = "बहिणी(Sisters)"
-		self.fields['num_sisters_married'].label = "विवाहित बहिणी(Married)"
-		self.fields['num_sisters_unmarried'].label = "अविवाहित बहिणी(Unmarried)"
-		self.fields['expectations'].label = "मुला / मुली बदल्ल अपेशा(Expectation's)"
-		self.fields['mobile'].label = " मोबाईल(Mobile)"
-		self.fields['phone'].label = "फोन(Phone)"
-		self.fields['address'].label = "सध्याचा पता(Current Postal Adress)"
-		self.fields['address_district'].label = "सध्याचा पता(District)"
+		self.fields['num_sisters'].label = "बहीण(Sister)"
+		self.fields['num_sisters_married'].label = "विवाहित बहीण(Married)"
+		self.fields['num_sisters_unmarried'].label = "अविवाहित बहीण(Unmarried)"
+		self.fields['expectations'].label = "मुला / मुली बदल्ल अपेक्षा(Expectation's)"
+		self.fields['mobile'].label = " भ्रमणध्वनी(Mobile)"
+		self.fields['phone'].label = "दूरध्वनी(Phone)"
+		self.fields['address'].label = "सध्याचा पत्रव्यवहाराचा पत्ता(Current Postal Adress)"
+		self.fields['address_district'].label = "जिल्हा(District)"
 		# self.helper.layout.append(Submit('save', 'save'))
 		self.helper = FormHelper(self)
 		# self.helper.form_class = 'form-horizontal'
@@ -68,16 +69,16 @@ class matriusercreateform(ModelForm):
 				Div('complexion', 'birth_place', css_class='row'),Div('qualification',
 				 'course_hobbie', css_class='row'),Div('occupation', 'business',
 				  css_class='row'),Div('agriculture', 'house', css_class='row'),
-				 Div('income', css_class='row'),),
+				 Div('income','blood_group', css_class='row'),),
 			Fieldset('Family Info',Div('father_occupation', 'mother_occupation', css_class='row'),
 			Div('father_name', 'father_nativeplace','father_nativeplace_district', css_class='row') ,
 			Div('mother_nativeplace', 'num_brothers', css_class='row'),
 			Div('num_brothers_married', 'num_brothers_unmarried', css_class='row'),
 			Div('num_sisters', 'num_sisters_married', css_class='row'),
 			Div('num_sisters_unmarried', css_class='row'),),
-			Fieldset('Expectations',Div('expectations', css_class='row')),
-			Fieldset('सपंर्क(Contact)',Div('mobile', 'phone', css_class='row'),
-			Div('address','address_district', css_class='row')),
+			Fieldset('(अपेक्षा)Expectations',Div('expectations', css_class='row')),
+			Fieldset('सपंर्क(Contact)',Div('address','address_district', css_class='row')),
+			Div('mobile', 'phone', css_class='row'),
       HTML('<div class="container">'), 
       Submit('submit', 'Update',css_class='ghost-button'), 
       HTML('</div>'),
@@ -98,6 +99,7 @@ class matriusercreateform(ModelForm):
 		self.helper['agriculture'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['house'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4  col-md-offset-2")
 		self.helper['income'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
+		self.helper['blood_group'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 
 		self.helper['father_occupation'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['mother_occupation'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
@@ -139,38 +141,39 @@ class regform(ModelForm):
 		self.fields['dob'].widget.format = '%d/%m/%Y'
 		# at the same time, set the input format on the date field like you want it:
 		self.fields['dob'].input_formats = ['%d/%m/%Y']
-		self.fields['tob'].label = "वेऴ(Time)"
+		self.fields['tob'].label = "वेळ(Time)"
 		self.fields['dob'].label = "जन्म तारीख(DOB)"
 		self.fields['name'].label = "मुलाचे नाव / मुलीचे नाव(Name of Candidate)"
 		self.fields['height'].label = "उंची(Height)"
 		self.fields['caste'].label = "जात्(caste)"
 		self.fields['complexion'].label = "रंग / वर्ण(Complexion)"
 		self.fields['birth_place'].label = "जन्म ठिकाण(Birth Place)"
-		self.fields['qualification'].label = "शिषन(Qualification)"
+		self.fields['qualification'].label = "सिक्षण(Qualification)"
 		self.fields['course_hobbie'].label = "कोर्स / छंद(Course / Hobbies)"
 		self.fields['occupation'].label = "नोकरी(Occupation)"
-		self.fields['business'].label = "य़वसाय(Business)"
+		self.fields['business'].label = "व्यवसाय(Business)"
 		self.fields['agriculture'].label = "शेती(Agriculture)"
 		self.fields['house'].label = "घर(House)"
-		self.fields['income'].label = "उतप्न(Income)"
-		self.fields['father_occupation'].label = "वडिलांची नोकरी/य़वसाय(Father's Occupation)"
-		self.fields['mother_occupation'].label = "आईची नोकरी/य़वसाय(Mother's Occupation) "
+		self.fields['income'].label = "उत्पन्न(Income)"
+		self.fields['blood_group'].label = "रक्त्तगट(Blood Group)"
+		self.fields['father_occupation'].label = "वडिलांचे नोकरी/व्यवसाय(Father's Occupation)"
+		self.fields['mother_occupation'].label = "आईचे नोकरी/व्यवसाय(Mother's Occupation) "
 		self.fields['father_name'].label = "वडिलांचे पुर्ण नाव(Father's Full Name)"
 
-		self.fields['father_nativeplace'].label = "वडिलांचे मुऴ गाव(Father's Native Place)"
-		self.fields['father_nativeplace_district'].label = "वडिलांचे मुऴ गाव(District)"
-		self.fields['mother_nativeplace'].label = "आईची मुऴ गाव(Mother's Native Place)"
+		self.fields['father_nativeplace'].label = "वडिलांचे मुळ गाव(Father's Native Place)"
+		self.fields['father_nativeplace_district'].label = "जिल्हा(District)"
+		self.fields['mother_nativeplace'].label = "आईचे मुळ गाव(Mother's Native Place)"
 		self.fields['num_brothers'].label = "भाऊ(Brothers)"
 		self.fields['num_brothers_married'].label = "विवाहित(Married)"
 		self.fields['num_brothers_unmarried'].label = "अविवाहित(Unmarried)"
-		self.fields['num_sisters'].label = "जन्म तारीख(DOB)"
-		self.fields['num_sisters_married'].label = "जन्म तारीख(DOB)"
-		self.fields['num_sisters_unmarried'].label = "जन्म तारीख(DOB)"
-		self.fields['expectations'].label = "मुला / मुली बदल्ल अपेशा(Expectation's)"
-		self.fields['mobile'].label = " मोबाईल(Mobile)"
-		self.fields['phone'].label = "फोन(Phone)"
-		self.fields['address'].label = "सध्याचा पता(Current Postal Adress)"
-		self.fields['address_district'].label = "सध्याचा पता(District)"
+		self.fields['num_sisters'].label = "बहीण(Sister)"
+		self.fields['num_sisters_married'].label = "विवाहित बहीण(Married)"
+		self.fields['num_sisters_unmarried'].label = "अविवाहित बहीण(Unmarried)"
+		self.fields['expectations'].label = "मुला / मुली बदल्ल अपेक्षा(Expectation's)"
+		self.fields['mobile'].label = " भ्रमणध्वनी(Mobile)"
+		self.fields['phone'].label = "दूरध्वनी(Phone)"
+		self.fields['address'].label = "सध्याचा पत्रव्यवहाराचा पत्ता(Current Postal Adress)"
+		self.fields['address_district'].label = "जिल्हा(District)"
 		# self.helper.layout.append(Submit('save', 'save'))
 		self.helper = FormHelper(self)
 		# self.helper.form_class = 'form-horizontal'
@@ -185,16 +188,17 @@ class regform(ModelForm):
 				Div('complexion', 'birth_place', css_class='row'),Div('qualification',
 				 'course_hobbie', css_class='row'),Div('occupation', 'business',
 				  css_class='row'),Div('agriculture', 'house', css_class='row'),
-				 Div('income', css_class='row'),),
-			Fieldset('Family Info',Div('father_occupation', 'mother_occupation', css_class='row'),
+				 Div('income','blood_group', css_class='row'),),
+			Fieldset('कौटुंबिक माहिती(Family Info)',Div('father_occupation', 'mother_occupation', css_class='row'),
 			Div('father_name', 'father_nativeplace','father_nativeplace_district', css_class='row') ,
 			Div('mother_nativeplace', 'num_brothers', css_class='row'),
 			Div('num_brothers_married', 'num_brothers_unmarried', css_class='row'),
 			Div('num_sisters', 'num_sisters_married', css_class='row'),
 			Div('num_sisters_unmarried', css_class='row'),),
-			Fieldset('Expectations',Div('expectations', css_class='row')),
-			Fieldset('सपंर्क(Contact)',Div('mobile', 'phone', css_class='row'),
-			Div('address','address_district', css_class='row')),
+			Fieldset('(अपेक्षा)Expectations',Div('expectations', css_class='row')),
+			Fieldset('सपंर्क(Contact)',Div('address','address_district', css_class='row')),
+				Div('mobile', 'phone', css_class='row'),
+			
       HTML('<div class="container">'), 
       Submit('submit', 'Register',css_class='ghost-button'), 
       HTML('</div>'),
@@ -215,6 +219,7 @@ class regform(ModelForm):
 		self.helper['agriculture'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['house'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4  col-md-offset-2")
 		self.helper['income'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
+		self.helper['blood_group'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 
 		self.helper['father_occupation'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['mother_occupation'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")

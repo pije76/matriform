@@ -61,6 +61,8 @@ class OrderListJson(BaseDatatableView):
     model = matriaspirant
     columns = ['profilepic.url', 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
+    order_columns = [ 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
+               'address_district', 'id']
 
     def prepare_results(self, qs):
         # prepare list with output column data
@@ -87,13 +89,24 @@ class OrderListJson(BaseDatatableView):
         # return self.model.objects.all()
         return self.model.objects.filter(matriaspirant_status="F")
 
+    def filter_queryset(self, qs):
+            # use parameters passed in GET request to filter queryset
+
+            # simple example:
+        search = self.request.GET.get(u'search[value]', None)
+        if search:
+            qs = qs.filter(name__istartswith=search)
+        return qs
+
 
 class M_OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
     columns = ['profilepic.url', 'name',  'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
-
+    order_columns = [ 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
+               'address_district', 'id']
+    max_display_length = 500
     def prepare_results(self, qs):
         # prepare list with output column data
         # queryset is already paginated here
@@ -119,13 +132,24 @@ class M_OrderListJson(BaseDatatableView):
         # return self.model.objects.all()
         return self.model.objects.filter(matriaspirant_status="M")
 
+    def filter_queryset(self, qs):
+            # use parameters passed in GET request to filter queryset
+
+            # simple example:
+        search = self.request.GET.get(u'search[value]', None)
+        if search:
+            qs = qs.filter(name__istartswith=search)
+        return qs
+
 
 class B_OrderListJson(BaseDatatableView):
         # The model we're going to show
     model = matriaspirant
     columns = ['profilepic.url', 'name', 'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
-
+    order_columns = [ 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
+               'address_district', 'id']
+    max_display_length = 500
     def prepare_results(self, qs):
         # prepare list with output column data
         # queryset is already paginated here
@@ -150,6 +174,15 @@ class B_OrderListJson(BaseDatatableView):
             return self.request.user.matriaspirant_set.filter(matriaspirant_status="B")
         # return self.model.objects.all()
         return self.model.objects.filter(matriaspirant_status="B")
+
+    def filter_queryset(self, qs):
+            # use parameters passed in GET request to filter queryset
+
+            # simple example:
+        search = self.request.GET.get(u'search[value]', None)
+        if search:
+            qs = qs.filter(name__istartswith=search)
+        return qs
 
 olistjson = login_required(OrderListJson.as_view())
 molistjson = login_required(M_OrderListJson.as_view())

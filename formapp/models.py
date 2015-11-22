@@ -11,6 +11,8 @@ from django.core.urlresolvers import reverse
 GENDER_CHOICES=(('M','Male'),('F','Female'))
 COMPLEXION_CHOICES=(('L','Light'),('F','Fair'),('W','Wheatish'),('D','Dark'))
 PROFILE_Status=(('F','Fresh'),('M','Married'),('B','Bin'))
+BLOOD_GROUP_CHOICES = (('O+','O +'),('O-','O -'),('A+','A +'),('A-','A -'),
+	('B+','B +'),('B-','B -'),('AB+','AB +'),('AB-','AB -'))
 
 
 
@@ -23,7 +25,8 @@ class matriaspirant(models.Model):
 	dob = models.DateField()
 	tob = models.CharField(max_length=12,null=True, blank=True)
 	height = models.DecimalField(max_digits=2,decimal_places=1,null=True, blank=True)
-	complexion = models.CharField(max_length=1,default='L',choices=COMPLEXION_CHOICES,null=True, blank=True)
+	complexion = models.CharField(max_length=1,choices=COMPLEXION_CHOICES,null=True, blank=True)
+	blood_group = models.CharField(max_length=1,choices=BLOOD_GROUP_CHOICES,null=True, blank=True)
 	caste = models.CharField(max_length=30)
 	birth_place = models.CharField(max_length=30,null=True, blank=True)
 	qualification = models.CharField(max_length=100)
