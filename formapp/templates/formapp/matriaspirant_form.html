@@ -10,6 +10,7 @@
 
 
 {% block extras%}
+
 {% if form.instance.profilepic %}
     <img id="image_upload_preview" style="height: 150px;" src="{{form.instance.profilepic.url}}" alt="your image" />
 {% else %}
@@ -42,7 +43,8 @@
                 minView: 'month',
                 pickerPosition: 'bottom-left',
                 todayBtn: true,
-                startView: 'month'
+                startView: 'month',
+                endDate: '-18y'
             });
 
      $('#id_tob').datetimepicker({
@@ -61,6 +63,7 @@ function readURL(input) {
 
             reader.onload = function (e) {
                 $('#image_upload_preview').attr('src', e.target.result);
+                $('#image_upload_preview').wrap(function(){return "<a href='"+e.target.result+"'  data-lightbox='profileimage'></a>";});
             }
 
             reader.readAsDataURL(input.files[0]);

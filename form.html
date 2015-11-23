@@ -6,7 +6,7 @@
 <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 	<style type="text/css">
 
-	h1,h2,h3,h4,h5,h6,p{line-height: 0px;}
+	body{line-height: 0.7em;}
 	.content{border-style: solid;
 		border-color: black;
 
@@ -23,7 +23,7 @@
    margin-right:  20px;
 
 }
-
+.double{line-height: 1em;}
 
 .print{
 	background: #25A6E1;
@@ -51,11 +51,11 @@ cursor:pointer}
   input.print {
     visibility: hidden;
   }}
-div{line-height: 1.5em;}
+div{line-height: 1.44em;}
 
 
 div.row{clear: both;}
-div.col{float: left;
+div.col{display: inline-block;
 }
 
 div.content{height: 850px;}
@@ -74,48 +74,53 @@ div.content1{padding: 5px 30px 5px 30px;}	</style>
 </div>
 
 <div class="content1">
-	<br>
+
 <img src="" alt="Photo">
-	<div style="width: 80%">नोंदणी क्र .(registration)</div>
-	<div style="width: 80%">दिनांक :(date)</div>
-	<div style="width: 80%">जात्(caste)</div>
-	<div  style="width: 80%">मुलाचे नाव / मुलीचे नाव(name)</div>
+<div class="row">
+	<div class="col" style="width: 80%">नोंदणी क्र .(registration) : <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et </span></div></div>
+	<div class="row">
+	<div class="col" style="width: 80%">दिनांक (date)</div></div>
+	<div class="row">
+	<div class="col" style="width: 80%">जात्(caste)</div></div>
+	<div class="row">
+	<div class="col" style="width: 80%">मुलाचे नाव / मुलीचे नाव(name)</div></div>
 
 	<div class="row">
-		<div class="col" style="width: 30%">जन्म तारीख(DOB)</div>
-		<div class="col" style="width: 30%">वेळ(Time)</div>
-		<div class="col" style="width: 30%">जन्म ठिकाण(Birth Place)</div>
+		<div class="col double" style="width: 30%">जन्म तारीख<br>(DOB)</div>
+		<div class="col double" style="width: 30%">वेळ<br>(Time)</div>
+		<div class="col double" style="width: 30%">जन्म ठिकाण<br>(Birth Place)</div>
 
 	</div>
-	<br>
+	
 
 	<div class="row">
 		<div class="col" style="width: 30%">उंची(Height)</div>
 		<div class="col" style="width: 40%">रंग / वर्ण(Complexion)</div>
 
 	</div>
-	<br>
+	
 
 <div class="row">
 		<div class="col" style="width: 30%">सिक्षण(Qualification)</div>
 		<div class="col" style="width: 40%">कोर्स / छंद(Course / Hobbies)</div>
 
 	</div>
-	<br>
+
 
 	<div class="row">
 		<div class="col" style="width: 30%">नोकरी(Occupation)</div>
 		<div class="col" style="width: 40%">व्यवसाय(Business)</div>
 
 	</div>
-	<br>
+
 
 		<div class="row">
 		<div class="col" style="width: 30%">शेती(Agriculture)</div>
 		<div class="col" style="width: 40%">घर(House)</div>
 
 	</div>
-	<br>
+	
 
 
 		<div class="row">
@@ -123,23 +128,24 @@ div.content1{padding: 5px 30px 5px 30px;}	</style>
 		<div class="col" style="width: 40%">रक्त्तगट(Blood Group)</div>
 
 	</div>
-	<br>
+	
 famil info
 	<div class="row">
-		<div class="col" style="width: 30%">वडिलांचे नोकरी/व्यवसाय(Father's Occupation)</div>
-		<div class="col" style="width: 40%">आईचे नोकरी/व्यवसाय(Mother's Occupation)</div>
+		<div class="col double" style="width: 40%">वडिलांचे नोकरी/व्यवसाय<br>(Father's Occupation)</div>
+
+		<div class="col double" style="width: 40%">आईचे नोकरी/व्यवसाय<br>(Mother's Occupation)</div>
 
 	</div>
-	<br>
+	
 वडिलांचे पुर्ण नाव(Father's Full Name)
 
 <div class="row">
-		<div class="col" style="width: 30%">वडिलांचे मुळ गाव(Father's Native Place)</div>
-		<div class="col" style="width: 20%">जिल्हा(District)</div>
-		<div class="col" style="width: 40%">आईचे मुळ गाव(Mother's Native Place)</div>
+		<div class="col double" style="width: 30%">वडिलांचे मुळ गाव<br>(Father's Native Place)</div>
+		<div class="col double" style="width: 20%">जिल्हा<br>(District)</div>
+		<div class="col double" style="width: 40%">आईचे मुळ गाव<br>(Mother's Native Place)</div>
 
 	</div>
-	<br>
+
 
 <div class="row">
 		<div class="col" style="width: 30%">भाऊ(Brothers)</div>
@@ -147,29 +153,29 @@ famil info
 		<div class="col" style="width: 30%">अविवाहित(Unmarried)</div>
 
 	</div>
-	<br>
+	
 <div class="row">
 		<div class="col" style="width: 30%">बहीण(Sister)</div>
 		<div class="col" style="width: 30%">विवाहित(Married)</div>
 		<div class="col" style="width: 30%">अविवाहित(Unmarried)</div>
 
 	</div>
-	<br>
+	
 
 (अपेक्षा)Expectations:
 	<div class="row">
-		<div class="col" style="width: 70%">सध्याचा पत्रव्यवहाराचा पत्ता(Current postal address)</div>
+		<div class="col double" style="width: 70%">सध्याचा पत्रव्यवहाराचा पत्ता<br>(Current postal address)</div>
 		<div class="col" style="width: 20%">जिल्हा(District)</div>
 
 	</div>
-	<br>
+	
 सपंर्क(Contact):
 <div class="row">
 		<div class="col" style="width: 30%">भ्रमणध्वनी(Mobile)</div>
 		<div class="col" style="width: 40%">दूरध्वनी(Phone)</div>
 
 	</div>
-	<br>
+	
 	<br>
 	
 
@@ -178,23 +184,23 @@ famil info
 		<div class="col" style="width: 10%">साही</div>
 
 	</div>
-	<br>
-	<br>
+	
+	
 	
 
-	<div style="border-top-style: solid;border-top-width: 1px;  ">नियम व अटी : 
+	<div style="border-top-style: solid;border-top-width: 1px;  ">
+<br>
+	नियम व अटी : 
 
 <div>
-	<p>१. संस्थेस नाव नोंदणी करणेपूर्वी मुलीचे वय १८ व मुलाचे वय २१ वर्षे पुर्ण असणे आवश्यक.</p>
-<p>
+	१. संस्थेस नाव नोंदणी करणेपूर्वी मुलीचे वय १८ व मुलाचे वय २१ वर्षे पुर्ण असणे आवश्यक.
+<br>
 २. माहिती मध्ये काही बदल झाल्यास ती संस्थेत कळविणे आवश्यक .
-</p>
-<p>
+<br>
 ३. संस्थेतर्फे घेण्यात येण्याचा मेळाव्यास मुलीने /मुलाने स्वतः उपस्थित राहणे आवश्यक.
-</p>
-<p>
+<br>
 ४. सलग दोन मेळाव्यास अनुपस्थित राहणाच्या मुली / मुलाची नोंदणी कोणतीही पुर्वसूचना न देता रद्द केली जाईल.
-</p>
+
 </div>
 
 	</div>

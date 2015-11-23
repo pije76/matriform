@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'wkhtmltopdf',
     'jqm',
     'djangojs',
+    'debug_toolbar'
 )
 
 
@@ -60,6 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -129,6 +131,20 @@ LOGIN_REDIRECT_URL = 'main'
 
 STATICFILES_DIRS = ("static",)
 
-WKHTMLTOPDF_CMD = '/usr/local/bin/wkhtmltopdf.sh'
+# WKHTMLTOPDF_CMD = '/usr/local/bin/wkhtmltopdf.sh'
 
 # AUTH_USER_MODEL = 'formapp.matriformuser'
+
+
+
+
+
+def show_toolbar(request):
+    # if not request.is_ajax() and request.user and request.user.username=="rjdp":
+    # return True
+    return False
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'matriform.settings.show_toolbar'
+}
+

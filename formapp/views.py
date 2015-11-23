@@ -50,10 +50,28 @@ class UserCreate(CreateView):
     fields = ['username', 'password', 'is_superuser', 'is_staff']
 
 
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
 class matriaspirantUpdate(UpdateView):
     model = matriaspirant
     # fields = ['profilepic','name','gender','caste']
     form_class = matriusercreateform
+
+    # def get_form_kwargs(self):
+    #     # logger.info("shittt")
+    #     kwargs = {}
+    #     if self.request.POST:
+    #         kwargs.update({
+    #         'data': self.request.POST,
+    #         'files': self.request.FILES,
+    #         })
+    #     logger.info(kwargs['files'])
+    #     return kwargs
+
+    
 
 
 class OrderListJson(BaseDatatableView):
@@ -89,14 +107,14 @@ class OrderListJson(BaseDatatableView):
         # return self.model.objects.all()
         return self.model.objects.filter(matriaspirant_status="F")
 
-    def filter_queryset(self, qs):
-            # use parameters passed in GET request to filter queryset
+    # def filter_queryset(self, qs):
+    #         # use parameters passed in GET request to filter queryset
 
-            # simple example:
-        search = self.request.GET.get(u'search[value]', None)
-        if search:
-            qs = qs.filter(name__istartswith=search)
-        return qs
+    #         # simple example:
+    #     search = self.request.GET.get(u'search[value]', None)
+    #     if search:
+    #         qs = qs.filter(name__istartswith=search)
+    #     return qs
 
 
 class M_OrderListJson(BaseDatatableView):
@@ -132,14 +150,14 @@ class M_OrderListJson(BaseDatatableView):
         # return self.model.objects.all()
         return self.model.objects.filter(matriaspirant_status="M")
 
-    def filter_queryset(self, qs):
-            # use parameters passed in GET request to filter queryset
+    # def filter_queryset(self, qs):
+    #         # use parameters passed in GET request to filter queryset
 
-            # simple example:
-        search = self.request.GET.get(u'search[value]', None)
-        if search:
-            qs = qs.filter(name__istartswith=search)
-        return qs
+    #         # simple example:
+    #     search = self.request.GET.get(u'search[value]', None)
+    #     if search:
+    #         qs = qs.filter(name__istartswith=search)
+    #     return qs
 
 
 class B_OrderListJson(BaseDatatableView):
@@ -175,14 +193,14 @@ class B_OrderListJson(BaseDatatableView):
         # return self.model.objects.all()
         return self.model.objects.filter(matriaspirant_status="B")
 
-    def filter_queryset(self, qs):
-            # use parameters passed in GET request to filter queryset
+    # def filter_queryset(self, qs):
+    #         # use parameters passed in GET request to filter queryset
 
-            # simple example:
-        search = self.request.GET.get(u'search[value]', None)
-        if search:
-            qs = qs.filter(name__istartswith=search)
-        return qs
+    #         # simple example:
+    #     search = self.request.GET.get(u'search[value]', None)
+    #     if search:
+    #         qs = qs.filter(name__istartswith=search)
+    #     return qs
 
 olistjson = login_required(OrderListJson.as_view())
 molistjson = login_required(M_OrderListJson.as_view())

@@ -45,8 +45,8 @@ class matriusercreateform(ModelForm):
 		self.fields['father_nativeplace_district'].label = "जिल्हा(District)"
 		self.fields['mother_nativeplace'].label = "आईचे मुळ गाव(Mother's Native Place)"
 		self.fields['num_brothers'].label = "भाऊ(Brothers)"
-		self.fields['num_brothers_married'].label = "विवाहित भाऊ(Married)"
-		self.fields['num_brothers_unmarried'].label = "अविवाहित भाऊ(Unmarried)"
+		self.fields['num_brothers_married'].label = "विवाहित(Married)"
+		self.fields['num_brothers_unmarried'].label = "अविवाहित(Unmarried)"
 		self.fields['num_sisters'].label = "बहीण(Sister)"
 		self.fields['num_sisters_married'].label = "विवाहित बहीण(Married)"
 		self.fields['num_sisters_unmarried'].label = "अविवाहित बहीण(Unmarried)"
@@ -70,7 +70,7 @@ class matriusercreateform(ModelForm):
 				 'course_hobbie', css_class='row'),Div('occupation', 'business',
 				  css_class='row'),Div('agriculture', 'house', css_class='row'),
 				 Div('income','blood_group', css_class='row'),),
-			Fieldset('Family Info',Div('father_occupation', 'mother_occupation', css_class='row'),
+			Fieldset('कौटुंबिक माहिती(Family Info)',Div('father_occupation', 'mother_occupation', css_class='row'),
 			Div('father_name', 'father_nativeplace','father_nativeplace_district', css_class='row') ,
 			Div('mother_nativeplace', 'num_brothers', css_class='row'),
 			Div('num_brothers_married', 'num_brothers_unmarried', css_class='row'),
@@ -104,8 +104,8 @@ class matriusercreateform(ModelForm):
 		self.helper['father_occupation'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['mother_occupation'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 		self.helper['father_name'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-3 col-md-offset-1")
-		self.helper['father_nativeplace'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
-		self.helper['father_nativeplace_district'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-2 col-md-offset-1")
+		self.helper['father_nativeplace'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 ")
+		self.helper['father_nativeplace_district'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-3 ")
 		self.helper['mother_nativeplace'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
 		self.helper['num_brothers'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4  col-md-offset-2")
 		self.helper['num_brothers_married'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-1")
@@ -119,7 +119,7 @@ class matriusercreateform(ModelForm):
 		self.helper['mobile'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4  col-md-offset-1")
 		self.helper['phone'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-4 col-md-offset-2")
 		self.helper['address'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-8 col-md-offset-1")
-		self.helper['address_district'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-2 col-md-offset-2")
+		self.helper['address_district'].wrap(crispy_forms.layout.Field, wrapper_class="col-md-2 ")
 
 
 class MyAuthenticationForm(AuthenticationForm):
