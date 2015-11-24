@@ -252,8 +252,8 @@ $('#mytableb tfoot th').each( function () {
         scrollY:        '55vh',
         scrollCollapse: true,
         "ajax": "{%  url 'order_list_json' %}",
-        "columnDefs": [{ "searchable": false, "targets": 0 },
-            { "searchable": false, "targets": 8 },
+        "columnDefs": [{"orderable": false , "searchable": false, "targets": 0 },
+            {"orderable": false , "searchable": false, "targets": 8 },
             {
 
                 // The `data` parameter refers to the data for the cell (defined by the
@@ -270,7 +270,7 @@ $('#mytableb tfoot th').each( function () {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div  class="btn-group"><a  title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit" ></span></a><a s title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-eye-open" ></span></a></div><div class="btn-group"><a   title="Move to Married" href="/move/married/'+data+'"  class="married btn btn-warning col-xs-6"><span class="glyphicon glyphicon-ban-circle" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="fresh_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                    return '<div  class="btn-group"><a  title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit" ></span></a><a s title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print" ></span></a></div><div class="btn-group"><a   title="Move to Married" href="/move/married/'+data+'"  class="married btn btn-warning col-xs-6"><span class="glyphicon glyphicon-ban-circle" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="fresh_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
                 },
                 "targets": 8 // column index 
              }
@@ -287,8 +287,8 @@ var mprofiletable = $('#mytablem').DataTable( {
          scrollY:        '55vh',
         scrollCollapse: true,
         "ajax": "{%  url 'morder_list_json' %}",
-        "columnDefs": [{ "searchable": false, "targets": 0 },
-            { "searchable": false, "targets": 8 },
+        "columnDefs": [{ "orderable": false ,"searchable": false, "targets": 0 },
+            { "orderable": false ,"searchable": false, "targets": 8 },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
@@ -304,7 +304,7 @@ var mprofiletable = $('#mytablem').DataTable( {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span></a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> </a></div><div class="btn-group"><a  title="Restore" href="/restore/fresh/'+data+'"  class="married_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="married_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span></a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print"></span> </a></div><div class="btn-group"><a  title="Restore" href="/restore/fresh/'+data+'"  class="married_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="married_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
                 },
                 "targets": 8 // column index 
              }
@@ -319,8 +319,8 @@ var bprofiletable = $('#mytableb').DataTable( {
          scrollY:        '55vh',
         scrollCollapse: true,
         "ajax": "{%  url 'border_list_json' %}",
-        "columnDefs": [{ "searchable": false, "targets": 0 },
-            { "searchable": false, "targets": 8 },
+        "columnDefs": [{ "orderable": false ,"searchable": false, "targets": 0 },
+            { "orderable": false ,"searchable": false, "targets": 8 },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
@@ -336,7 +336,7 @@ var bprofiletable = $('#mytableb').DataTable( {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span> </a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-eye-open"></span> </a><a   title="Restore" href="/restore/fresh/'+data+'"  class="bin_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a></div>';
+                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span> </a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print"></span> </a><a   title="Restore" href="/restore/fresh/'+data+'"  class="bin_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a></div>';
                 },
                 "targets": 8 // column index 
              }
@@ -434,13 +434,13 @@ $('#example tbody').on( 'click', 'img.icon-transfer', function () {
         var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            if (response == 'success move_to_married'){
+            if (response){
     profiletable
         .row( $(this_row).parents('tr') )
         .remove()
         .draw();
-
-        mprofiletable.ajax.reload();}}
+if (response == 'success move_to_married'){mprofiletable.ajax.reload();}
+        }}
         );
 } );
 
@@ -463,18 +463,18 @@ $('#example tbody').on( 'click', 'img.icon-transfer', function () {
         var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            if (response == 'success move_to_bin'){
+            if (response){
     profiletable
         .row( $(this_row).parents('tr') )
         .remove()
         .draw();
-
-        bprofiletable.ajax.reload();}}
+if (response == 'success move_to_bin'){bprofiletable.ajax.reload();}
+        }}
         );
 } );
 
 
- $(".alert").fadeTo(2000, 500).slideUp(700, function(){
+ $(".alert").fadeTo(2000, 500).slideUp(1000, function(){
     $(".alert").alert('close');
 });
 
@@ -497,13 +497,13 @@ $('#example tbody').on( 'click', 'img.icon-transfer', function () {
         var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            if (response == 'success move_to_bin'){
+            if (response){
     mprofiletable
         .row( $(this_row).parents('tr') )
         .remove()
         .draw();
-
-        bprofiletable.ajax.reload();}}
+if (response == 'success move_to_bin'){bprofiletable.ajax.reload();}
+        }}
         );
 } );
 
@@ -526,13 +526,13 @@ $('#mytableb tbody').on( 'click', '.bin_restore', function () {
         var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            if (response == 'success restore_to_fresh'){
+            if (response ){
     bprofiletable
         .row( $(this_row).parents('tr') )
         .remove()
         .draw();
-
-        profiletable.ajax.reload();}}
+if (response == 'success restore_to_fresh'){ profiletable.ajax.reload();}
+       }}
         );
 } );
 {% comment %}
@@ -553,13 +553,13 @@ $('#mytableb tbody').on( 'click', '.bin_restore', function () {
         var this_row = this ;
         $.get($(this).attr('href'),function(response){
             console.log(response);
-            if (response == 'success restore_to_fresh'){
+            if (response ){
     mprofiletable
         .row( $(this_row).parents('tr') )
         .remove()
         .draw();
-
-        profiletable.ajax.reload();}}
+if (response == 'success restore_to_fresh'){ profiletable.ajax.reload();}
+       }}
         );
 } );
 
