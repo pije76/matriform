@@ -80,10 +80,10 @@
 
         
         
-            <div  id="fresh">
+            <div  id="fresh" class="dtable">
             <br/>
             
-                <table id="mytable" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                <table id="mytable"  class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
@@ -115,7 +115,7 @@
         </tfoot>
                 </table> 
             </div>
-            <div  id="married"><br/>
+            <div  id="married" class="dtable"><br/>
                   <table id="mytablem" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
@@ -149,7 +149,7 @@
                 </table> 
                 
             </div> 
-            <div id="bin"><br/>
+            <div id="bin" class="dtable"><br/>
                   <table id="mytableb" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
@@ -230,19 +230,19 @@
 
     $('#mytable tfoot th').each( function () {
         var title = $('#mytable thead th').eq( $(this).index() ).text();
-        if (title!="Image" && title!="action")
+        if (title!="Image" && title!="Actions")
         $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
     } );
 
     $('#mytablem tfoot th').each( function () {
         var title = $('#mytable thead th').eq( $(this).index() ).text();
-        if (title!="Image" && title!="action")
+        if (title!="Image" && title!="Actions")
         $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
     } );
 
 $('#mytableb tfoot th').each( function () {
         var title = $('#mytable thead th').eq( $(this).index() ).text();
-        if (title!="Image" && title!="action")
+        if (title!="Image" && title!="Actions")
         $(this).html( '<input type="searches"  placeholder="'+title+'" />' );
     } );
 
