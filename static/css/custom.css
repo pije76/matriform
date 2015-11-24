@@ -99,7 +99,7 @@ input::-webkit-input-placeholder {
     box-shadow: 0 0 4px rgba(0,0,0,.4);
     border-radius: 0;
     text-align: center;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 input[type=file] {
@@ -282,6 +282,3 @@ table.dataTable thead .sorting {
 
 
 
-.dtable{
-	overflow-x: scroll;
-}

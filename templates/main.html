@@ -83,7 +83,7 @@
             <div  id="fresh" class="dtable">
             <br/>
             
-                <table id="mytable"  class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                <table id="mytable"  class="display cell-border " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
@@ -116,7 +116,7 @@
                 </table> 
             </div>
             <div  id="married" class="dtable"><br/>
-                  <table id="mytablem" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                  <table id="mytablem" class="display cell-border " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
@@ -150,7 +150,7 @@
                 
             </div> 
             <div id="bin" class="dtable"><br/>
-                  <table id="mytableb" class="display cell-border table-responsive " border="0" cellpadding="-5" cellspacing="0" width="100%">
+                  <table id="mytableb" class="display cell-border " border="0" cellpadding="-5" cellspacing="0" width="100%">
                     
 
                                 <thead>
@@ -249,9 +249,13 @@ $('#mytableb tfoot th').each( function () {
    var profiletable = $('#mytable').DataTable( {
         "processing": true,
         "serverSide": true,
+        scrollY:        '55vh',
+        scrollCollapse: true,
         "ajax": "{%  url 'order_list_json' %}",
-        "columnDefs": [
+        "columnDefs": [{ "searchable": false, "targets": 0 },
+            { "searchable": false, "targets": 8 },
             {
+
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
@@ -280,8 +284,11 @@ $('#mytableb tfoot th').each( function () {
 var mprofiletable = $('#mytablem').DataTable( {
         "processing": true,
         "serverSide": true,
+         scrollY:        '55vh',
+        scrollCollapse: true,
         "ajax": "{%  url 'morder_list_json' %}",
-        "columnDefs": [
+        "columnDefs": [{ "searchable": false, "targets": 0 },
+            { "searchable": false, "targets": 8 },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
@@ -309,8 +316,11 @@ var mprofiletable = $('#mytablem').DataTable( {
 var bprofiletable = $('#mytableb').DataTable( {
         "processing": true,
         "serverSide": true,
+         scrollY:        '55vh',
+        scrollCollapse: true,
         "ajax": "{%  url 'border_list_json' %}",
-        "columnDefs": [
+        "columnDefs": [{ "searchable": false, "targets": 0 },
+            { "searchable": false, "targets": 8 },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
