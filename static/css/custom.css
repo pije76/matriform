@@ -39,11 +39,11 @@ input[type=search]:focus {
 
 
 input[type=searches] {
-	background: #ededed url(../img/search-icon.png) no-repeat 9px center;
+	/*background: #ededed url(../img/search-icon.png) no-repeat 9px center;*/
 	border: solid 1px #ccc;
-	padding: 4px 10px 4px 32px;
+	/*padding: 4px 10px 4px 32px;*/
 	width: 80%;
-	
+	text-align: center;
 	-webkit-border-radius: 10em;
 	-moz-border-radius: 10em;
 	border-radius: 10em;

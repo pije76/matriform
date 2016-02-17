@@ -79,8 +79,8 @@ class OrderListJson(BaseDatatableView):
     model = matriaspirant
     columns = ['profilepic.url', 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
-    order_columns = [ 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
-               'address_district', 'id']
+    order_columns = [ '','name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
+               'address_district', '']
 
     def prepare_results(self, qs):
         # prepare list with output column data
@@ -103,9 +103,9 @@ class OrderListJson(BaseDatatableView):
     def get_initial_queryset(self):
         if not self.request.user.is_superuser:
                 # return self.request.user.matriaspirant_set.all()
-            return self.request.user.matriaspirant_set.filter(matriaspirant_status="F")
+            return self.request.user.matriaspirant_set.filter(matriaspirant_status="F").order_by('created')
         # return self.model.objects.all()
-        return self.model.objects.filter(matriaspirant_status="F")
+        return self.model.objects.filter(matriaspirant_status="F").order_by('created')
 
     # def filter_queryset(self, qs):
     #         # use parameters passed in GET request to filter queryset
@@ -122,8 +122,8 @@ class M_OrderListJson(BaseDatatableView):
     model = matriaspirant
     columns = ['profilepic.url', 'name',  'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
-    order_columns = [ 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
-               'address_district', 'id']
+    order_columns = [ '','name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
+               'address_district', '']
     max_display_length = 500
     def prepare_results(self, qs):
         # prepare list with output column data
@@ -146,9 +146,9 @@ class M_OrderListJson(BaseDatatableView):
     def get_initial_queryset(self):
         if not self.request.user.is_superuser:
             # return self.request.user.matriaspirant_set.all()
-            return self.request.user.matriaspirant_set.filter(matriaspirant_status="M")
+            return self.request.user.matriaspirant_set.filter(matriaspirant_status="M").order_by('modified')
         # return self.model.objects.all()
-        return self.model.objects.filter(matriaspirant_status="M")
+        return self.model.objects.filter(matriaspirant_status="M").order_by('modified')
 
     # def filter_queryset(self, qs):
     #         # use parameters passed in GET request to filter queryset
@@ -165,8 +165,8 @@ class B_OrderListJson(BaseDatatableView):
     model = matriaspirant
     columns = ['profilepic.url', 'name', 'gender','caste', 'dob', 'qualification', 'father_nativeplace_district',
                'address_district', 'id']
-    order_columns = [ 'name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
-               'address_district', 'id']
+    order_columns = [ '','name', 'gender', 'caste', 'dob', 'qualification', 'father_nativeplace_district',
+               'address_district', '']
     max_display_length = 500
     def prepare_results(self, qs):
         # prepare list with output column data
@@ -189,9 +189,9 @@ class B_OrderListJson(BaseDatatableView):
     def get_initial_queryset(self):
         if not self.request.user.is_superuser:
             # return self.request.user.matriaspirant_set.all()
-            return self.request.user.matriaspirant_set.filter(matriaspirant_status="B")
+            return self.request.user.matriaspirant_set.filter(matriaspirant_status="B").order_by('modified')
         # return self.model.objects.all()
-        return self.model.objects.filter(matriaspirant_status="B")
+        return self.model.objects.filter(matriaspirant_status="B").order_by('modified')
 
     # def filter_queryset(self, qs):
     #         # use parameters passed in GET request to filter queryset

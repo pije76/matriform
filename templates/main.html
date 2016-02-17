@@ -8,7 +8,7 @@
       <!-- <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}"> -->
       <link rel="stylesheet" href="{% static 'css/custom.css' %}">
       <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
-      <link rel="stylesheet" href="{% static 'css/dataTables.responsive.css' %}">
+      <!-- <link rel="stylesheet" href="{% static 'css/dataTables.responsive.css' %}"> -->
       
       <!-- <link rel="stylesheet" href="{% static 'css/dataTables.jqueryui.min.css' %}"> -->
 
@@ -249,8 +249,9 @@ $('#mytableb tfoot th').each( function () {
    var profiletable = $('#mytable').DataTable( {
         "processing": true,
         "serverSide": true,
-        scrollY:        '55vh',
-        scrollCollapse: true,
+        "order": [],
+        // scrollY:        '55vh',
+        // scrollCollapse: true,
         "ajax": "{%  url 'order_list_json' %}",
         "columnDefs": [{"orderable": false , "searchable": false, "targets": 0 },
             {"orderable": false , "searchable": false, "targets": 8 },
@@ -270,7 +271,7 @@ $('#mytableb tfoot th').each( function () {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div  class="btn-group"><a  title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit" ></span></a><a s title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print" ></span></a></div><div class="btn-group"><a   title="Move to Married" href="/move/married/'+data+'"  class="married btn btn-warning col-xs-6"><span class="glyphicon glyphicon-ban-circle" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="fresh_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                    return '<div  class="btn-group"><a  title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit" ></span></a><a s title="View / Print" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print" ></span></a></div><div class="btn-group"><a   title="Move to Married" href="/move/married/'+data+'"  class="married btn btn-warning col-xs-6"><span class="glyphicon glyphicon-ban-circle" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="fresh_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
                 },
                 "targets": 8 // column index 
              }
@@ -284,8 +285,9 @@ $('#mytableb tfoot th').each( function () {
 var mprofiletable = $('#mytablem').DataTable( {
         "processing": true,
         "serverSide": true,
-         scrollY:        '55vh',
-        scrollCollapse: true,
+        "order": [],
+         // scrollY:        '55vh',
+        // scrollCollapse: true,
         "ajax": "{%  url 'morder_list_json' %}",
         "columnDefs": [{ "orderable": false ,"searchable": false, "targets": 0 },
             { "orderable": false ,"searchable": false, "targets": 8 },
@@ -304,7 +306,7 @@ var mprofiletable = $('#mytablem').DataTable( {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span></a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print"></span> </a></div><div class="btn-group"><a  title="Restore" href="/restore/fresh/'+data+'"  class="married_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="married_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
+                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span></a><a title="View / Print" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print"></span> </a></div><div class="btn-group"><a  title="Restore" href="/restore/fresh/'+data+'"  class="married_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a><a  title="Move to Recycle-bin" href="/move/bin/'+data+'" class="married_to_bin btn btn-danger col-xs-6"><span class="glyphicon glyphicon-trash" ></span></a></div>';
                 },
                 "targets": 8 // column index 
              }
@@ -316,8 +318,9 @@ var mprofiletable = $('#mytablem').DataTable( {
 var bprofiletable = $('#mytableb').DataTable( {
         "processing": true,
         "serverSide": true,
-         scrollY:        '55vh',
-        scrollCollapse: true,
+        "order": [],
+         // scrollY:        '55vh',
+        // scrollCollapse: true,
         "ajax": "{%  url 'border_list_json' %}",
         "columnDefs": [{ "orderable": false ,"searchable": false, "targets": 0 },
             { "orderable": false ,"searchable": false, "targets": 8 },
@@ -336,7 +339,7 @@ var bprofiletable = $('#mytableb').DataTable( {
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
-                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span> </a><a title="View" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print"></span> </a><a   title="Restore" href="/restore/fresh/'+data+'"  class="bin_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a></div>';
+                    return '<div class="btn-group"><a title="Edit" href="/matriaspirant/edit/'+data+'" target="_blank"  class="btn btn-primary col-xs-6"><span class="glyphicon glyphicon-edit"></span> </a><a title="View / Print" href="/matriaspirant/view/'+data+'" target="_blank" class="btn btn-success col-xs-6"><span class="glyphicon glyphicon-print"></span> </a><a   title="Restore" href="/restore/fresh/'+data+'"  class="bin_restore btn btn-info col-xs-6"><span class="glyphicon glyphicon-home" ></span></a></div>';
                 },
                 "targets": 8 // column index 
              }
